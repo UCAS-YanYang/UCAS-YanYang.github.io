@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ucas-yanyang.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="In this article, record some of the pitfalls encountered when using hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Notes on Hexo">
+<meta property="og:url" content="https://ucas-yanyang.github.io/Hexo_Notes/hexo_notes/index.html">
+<meta property="og:site_name" content="装作爱学习的YY的Blog">
+<meta property="og:description" content="In this article, record some of the pitfalls encountered when using hexo">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://ucas-yanyang.github.io/Hexo_Notes/hexo_notes/image-20230620223136968.png">
+<meta property="og:image" content="https://ucas-yanyang.github.io/Hexo_Notes/hexo_notes/image-20230620223310076.png">
+<meta property="og:image" content="https://ucas-yanyang.github.io/Hexo_Notes/hexo_notes/image-20230620223517875.png">
+<meta property="article:published_time" content="2023-06-20T14:22:40.000Z">
+<meta property="article:modified_time" content="2023-06-20T14:49:32.704Z">
+<meta property="article:author" content="YY">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="Experience">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ucas-yanyang.github.io/Hexo_Notes/hexo_notes/image-20230620223136968.png">
+
+<link rel="canonical" href="https://ucas-yanyang.github.io/Hexo_Notes/hexo_notes/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Notes on Hexo | 装作爱学习的YY的Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">装作爱学习的YY的Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://ucas-yanyang.github.io/Hexo_Notes/hexo_notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YY">
+      <meta itemprop="description" content="学好最优化，走遍天下都不怕">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="装作爱学习的YY的Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Notes on Hexo
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2023-06-20 22:22:40 / Modified: 22:49:32" itemprop="dateCreated datePublished" datetime="2023-06-20T22:22:40+08:00">2023-06-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">In this article, record some of the pitfalls encountered when using hexo</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>本文主要记录一些在使用Hexo部署博客时遇到的坑。</p>
+<h3 id="Hexo项目简介"><a href="#Hexo项目简介" class="headerlink" title="Hexo项目简介"></a>Hexo项目简介</h3><ol>
+<li><strong>安装 Hexo：</strong> Hexo 是一个基于 Node.js 的静态网站生成器，它可以将你编写的 Markdown 文件转换为静态网页。首先，你需要安装 Node.js，并使用 npm（Node.js 包管理器）来安装 Hexo。</li>
+<li><strong>创建 Hexo 项目：</strong> 在命令行终端中，通过运行 <code>hexo init &lt;folder&gt;</code> 创建 Hexo 项目，其中 <code>&lt;folder&gt;</code> 是你要创建的项目文件夹的名称。Hexo 将为你创建一个基本的项目结构，包括配置文件、主题和内容文件夹。</li>
+<li><strong>配置 Hexo：</strong> 进入 Hexo 项目文件夹，并编辑 <code>_config.yml</code> 文件来配置你的个人主页的设置，比如网站标题、描述、主题等。根据需要进行相应的定制化设置。</li>
+<li><strong>编写内容：</strong> 在 Hexo 项目的 <code>source/_posts</code> 目录中，你可以创建 Markdown 文件来编写博客文章或页面内容。使用 Markdown 格式编写的文件可以包含文本、图片、链接等。每当你添加、修改或删除文章时，Hexo 将重新生成静态网页。</li>
+<li><strong>生成静态网页：</strong> 在命令行终端中，运行 <code>hexo generate</code> 命令来生成静态网页。Hexo 将会解析你的 Markdown 文件，并根据配置生成相应的 HTML、CSS 和 JavaScript 文件，并将它们存储在 <code>public</code> 文件夹中。</li>
+<li><strong>部署到 GitHub：</strong> 将生成的静态网页部署到 GitHub Pages 上，使你的个人主页可以在线访问。在 GitHub 上创建一个新的仓库，并将其命名为 <code>&lt;你的用户名&gt;.github.io</code>。然后，将 Hexo 生成的 <code>public</code> 文件夹中的内容复制到该仓库的主分支上。</li>
+<li><strong>配置 GitHub Pages：</strong> 在 GitHub 仓库的设置中，找到 “GitHub Pages” 选项，并选择将 “Source” 设置为 “master branch”。保存设置后，GitHub Pages 将开始自动构建并托管你的个人主页。</li>
+<li><strong>更新和发布：</strong> 当你编写新的博客文章或修改现有内容时，重复步骤 4 到步骤 7，即编写内容、生成静态网页并部署到 GitHub Pages。</li>
+</ol>
+<p>总结起来，Hexo 通过将 Markdown 文件转换为静态网页，以便在 GitHub 上托管和展示你的个人主页。你可以使用 Hexo 提供的命令进行生成和部署操作，而 GitHub Pages 则负责将生成的静态网页发布到互联网上，使其他人能够访问和浏览你的个人主页。</p>
+<h3 id="写作"><a href="#写作" class="headerlink" title="写作"></a>写作</h3><ul>
+<li><p>Hexo 配置文件（<code>_config.yml</code>）中的一些配置项：</p>
+<ul>
+<li><code>timezone: Asia/Shanghai</code>，没有Beijing这个选项，写Beijing在部署的时候会报错</li>
+<li><code>url: https://ucas-yanyang.github.io/</code>，这个链接到你的主页网址</li>
+<li>​</li>
+</ul>
+<p>		</p>
+</li>
+<li><p>Hexo本地与部署不一致问题：</p>
+</li>
+<li><p>写作流程：</p>
+<ol>
+<li><p><strong>创建新文章：</strong> 使用 Hexo 命令行工具创建新的 Markdown 文件，这将成为你的新文章的源文件。可以使用以下命令创建新文章：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo new [layout] &quot;文章标题&quot;</span><br><span class="line">或者</span><br><span class="line">hexo new [layout] --path Hexo_Notes/hexo_notes &quot;文章标题&quot;</span><br></pre></td></tr></table></figure>
+
+<p>其中 <code>[layout]</code> 是可选参数，用于指定文章的布局模板，默认为 <code>_config.yml</code> 文件中配置的 <code>default_layout</code> 值。第二行指令会在.&#x2F;source&#x2F;_posts&#x2F;Hexo_Notes路径下生成hexo_notes.md文件，指令中不存在的文件夹会自动创建。</p>
+</li>
+<li><p><strong>编辑文章内容：</strong> 使用文本编辑器打开新创建的 Markdown 文件，并在其中编写文章内容。你可以使用 Markdown 语法来格式化和排版文本，同时添加必要的元数据，如标题、日期、标签、分类等。确保在文章的元数据和正文之间使用 <code>---</code> 分隔符。</p>
+</li>
+<li><p><strong>保存文章：</strong> 在编辑完成后，保存 Markdown 文件。</p>
+</li>
+<li><p><strong>生成静态页面：</strong> 运行 Hexo 命令来生成静态网页。使用以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Copy code</span><br><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>这将使用你写的文章和网站主题模板生成最终的静态网页。</p>
+</li>
+<li><p><strong>本地预览：</strong> 运行 Hexo 命令来启动本地服务器，以便在浏览器中预览生成的网页。使用以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Copy code</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
+<p>打开浏览器，并访问预览链接（通常为 <code>http://localhost:4000</code>）来查看生成的网页。这样你可以确认文章的外观和格式是否符合预期。</p>
+</li>
+<li><p><strong>发布文章：</strong> 最后，将生成的静态网页部署到你的网站服务器上，使其对公众可见。具体的发布方法取决于你的网站托管平台，一般情况下，你需要将生成的静态网页上传到相应的服务器或托管平台上，如 GitHub Pages、Netlify、Vercel 等。你可以使用 Hexo 提供的相应部署命令，或手动将生成的网页文件上传到服务器上。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Copy code</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>或者，你可以将生成的网页文件手动拷贝到服务器指定的目录。</p>
+</li>
+</ol>
+<p>这些步骤可以让你在 Hexo 中完成文章的创建、编辑、生成和发布。请根据具体情况和你的网站配置进行相应的调整和操作。</p>
+</li>
+</ul>
+<ul>
+<li><p>插入图片，主要原理参考博客<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_43401436/article/details/107191688">hexo博客中插入图片失败——解决思路及个人最终解决办法_hexo博客插入</a>。以下附加几点说明：</p>
+<ul>
+<li><p>我采用的是npm package hexo-asset-image，其实起作用的主要是路径<code>.\node_modules\hexo-asset-image</code>下的json文件<code>index.js</code>，我们可以修改它。刚开始用这个包比较烦的地方可能是如上面博客链接中所说，在项目中生成的相对路径不大对，我们可以点进github仓库看由md转成html的源码，例如：</p>
+<p><img src="/Hexo_Notes/hexo_notes/image-20230620223136968.png" alt="image-20230620223136968"></p>
+<p>再对比一下png和html文件的相对位置关系：</p>
+<p><img src="/Hexo_Notes/hexo_notes/image-20230620223310076.png" alt="image-20230620223310076"></p>
+<p>再到主页看一下文章链接格式（与设置permalink有关）：</p>
+<p><img src="/Hexo_Notes/hexo_notes/image-20230620223517875.png" alt="image-20230620223517875"></p>
+<p>然后再去试调几次<code>index.js</code>就可以试出来如何配置了。</p>
+</li>
+<li><p>对于md博客的整理，我采用</p>
+</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+              <a href="/tags/Experience/" rel="tag"># Experience</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/yy_study_notes/CS267/CS267_Lec1/" rel="prev" title="Notes on Lecture1">
+      <i class="fa fa-chevron-left"></i> Notes on Lecture1
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/yy_study_notes/CS267/test/" rel="next" title="test">
+      test <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hexo%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">Hexo项目简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%99%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">写作</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">YY</p>
+  <div class="site-description" itemprop="description">学好最优化，走遍天下都不怕</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YY</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
