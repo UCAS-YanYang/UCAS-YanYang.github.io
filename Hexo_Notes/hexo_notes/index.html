@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://ucas-yanyang.github.io/Hexo_Notes/hexo_notes/image-20230620223310076.png">
 <meta property="og:image" content="https://ucas-yanyang.github.io/Hexo_Notes/hexo_notes/image-20230620223517875.png">
 <meta property="article:published_time" content="2023-06-20T14:22:40.000Z">
-<meta property="article:modified_time" content="2023-06-20T15:30:08.279Z">
+<meta property="article:modified_time" content="2023-06-21T03:04:52.134Z">
 <meta property="article:author" content="YY">
 <meta property="article:tag" content="Hexo">
 <meta property="article:tag" content="Experience">
@@ -178,10 +178,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2023-06-20 22:22:40 / Modified: 23:30:08" itemprop="dateCreated datePublished" datetime="2023-06-20T22:22:40+08:00">2023-06-20</time>
+              <time title="Created: 2023-06-20 22:22:40" itemprop="dateCreated datePublished" datetime="2023-06-20T22:22:40+08:00">2023-06-20</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-06-21 11:04:52" itemprop="dateModified" datetime="2023-06-21T11:04:52+08:00">2023-06-21</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -217,7 +223,10 @@
 </ol>
 <p>总结起来，Hexo 通过将 Markdown 文件转换为静态网页，以便在 GitHub 上托管和展示你的个人主页。你可以使用 Hexo 提供的命令进行生成和部署操作，而 GitHub Pages 则负责将生成的静态网页发布到互联网上，使其他人能够访问和浏览你的个人主页。</p>
 <h3 id="配置、使用说明（坑点）"><a href="#配置、使用说明（坑点）" class="headerlink" title="配置、使用说明（坑点）"></a>配置、使用说明（坑点）</h3><ul>
-<li>卸载npm装过的包时，需要use the syntax <code>npm uninstall package-name</code> in the <strong>directory where the package is located.</strong></li>
+<li><p>配置参考的是<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/102592286">从零开始搭建个人博客 - 知乎 (zhihu.com)</a>，但有一些小错误，配置过程中得到解决</p>
+</li>
+<li><p>卸载npm装过的包时，需要use the syntax <code>npm uninstall package-name</code> in the <strong>directory where the package is located.</strong></p>
+</li>
 </ul>
 <h3 id="写作"><a href="#写作" class="headerlink" title="写作"></a>写作</h3><ul>
 <li><p>Hexo 配置文件（<code>_config.yml</code>）中的一些配置项：</p>
@@ -277,7 +286,7 @@
 <p><img src="/Hexo_Notes/hexo_notes/image-20230620223517875.png" alt="image-20230620223517875"></p>
 <p>然后再去试调几次<code>index.js</code>就可以试出来如何配置了。</p>
 </li>
-<li><p>对于md博客的整理，我采用</p>
+<li><p>对于md博客的整理，当然可以用时间分文件夹，我为了方便管理，按自己在source&#x2F;_posts&#x2F;文件夹下自己创建的文件夹分类来管理，这就要求插入图片时不能用hexo自带的方法，得用包hexo-asset-image。</p>
 </li>
 </ul>
 </li>
