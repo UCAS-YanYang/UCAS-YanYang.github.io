@@ -259,7 +259,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-06-21 20:27:24" itemprop="dateModified" datetime="2023-06-21T20:27:24+08:00">2023-06-21</time>
+                <time title="Modified: 2023-06-21 22:32:37" itemprop="dateModified" datetime="2023-06-21T22:32:37+08:00">2023-06-21</time>
               </span>
 
           
@@ -273,7 +273,65 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>This lecture is an overview</p>
+          <p>This lecture is an overview of <strong>Parallel Computing</strong></p>
+<h3 id="Content">Content</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>What is a Parallel Computer?</p>
+<img src="/yy_study_notes/CS267/CS267_Lec1/image-20230621203711781.png" alt="image-20230621203711781" style="zoom:80%;">
+</li>
+<li class="lvl-2">
+<p>Why is high-performance computing often synonymous with parallel computing?</p>
+<ul class="lvl-2">
+<li class="lvl-4">Performance = parallelism</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p>Why do we care so much about interconnect and communication?</p>
+</li>
+<li class="lvl-4">
+<p>Efficiency = locality</p>
+</li>
+<li class="lvl-2">
+<p>Concurrency vs. Parallelism</p>
+<ul class="lvl-2">
+<li class="lvl-4">Concurrency: multiple tasks are logically active at one time. Consider how to shift between different tasks;</li>
+<li class="lvl-4">Parallelism: multiple tasks are actually active at one time.</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>Parallel Computer vs. Distributed System</p>
+</li>
+</ul>
+<h3 id="Remark">Remark</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>“chips” 一词通常指的是计算机系统中的芯片（chips），也称为集成电路芯片（integrated circuit chips）。芯片是一种由半导体材料制成的小型电子设备，其中包含了大量的电子元件，例如晶体管、电阻器和电容器等。</p>
+<p>在并行计算领域，芯片通常指代计算机处理器芯片（processor chip），也称为中央处理器（Central Processing Unit, CPU）。处理器芯片是计算机的核心组件，负责执行计算和控制计算机的操作。</p>
+<p>此外，根据上下文，“chips” 还可能指代其他类型的芯片或集成电路，如图形处理器（Graphics Processing Unit, GPU）芯片、协处理器芯片（如英特尔的Xeon Phi）、网络接口芯片、内存控制器芯片等，这些芯片在特定的计算任务中扮演着重要角色。</p>
+</li>
+<li class="lvl-2">
+<p>node: node can include multiple sockets of multicore chips and these nodes can be connected to each other in some sort of cabinet:</p>
+<p>在高性能计算（HPC）中，术语&quot;node&quot;（节点）通常用来指代一个处理器单元或一个计算单元。一个节点可以包含多个插槽（sockets），每个插槽中装有多核芯片（multicore chips）。这意味着一个节点可以由多个物理处理器组成，每个处理器又可以具有多个核心。</p>
+<p>为了实现更高的计算能力，多个节点可以通过某种形式的机柜（cabinet）连接在一起。机柜是一种物理结构，用于容纳和组织多个节点。节点之间的连接通常通过高速互连网络（例如InfiniBand或以太网）进行。这种连接方式可以实现节点之间的数据交换和通信，从而形成一个并行计算系统。</p>
+<p>总结起来，HPC中的节点指的是处理器单元或计算单元，每个节点可以由多个插槽和多核芯片组成。这些节点可以通过机柜连接在一起，以实现高性能计算和并行处理。</p>
+</li>
+<li class="lvl-2">
+<p>分布式系统inherently distributed, all clients at different locations and requests are not at the same time，但是并行系统的任务是同时的:</p>
+<p>分布式系统和并行系统是两个不同的概念，它们在设计和执行计算任务时有一些关键区别。</p>
+<p>分布式系统是由多台计算机或节点组成的系统，这些节点在物理上分布在不同的位置，通过网络进行通信和协调。每个节点可以独立地执行任务，彼此之间通过消息传递来进行通信和数据交换。分布式系统的设计目标是通过将计算和存储资源分布在不同的节点上，以实现更高的可靠性、扩展性和容错性。</p>
+<p>以网上银行为例，分布式系统适用于该场景，因为网上银行需要提供服务给全球范围内的用户。用户位于不同的地理位置，他们的请求通过网络发送到银行的服务器。服务器可以分布在不同的数据中心或地理位置上，形成一个分布式系统。每个服务器独立地处理用户请求，并将结果返回给相应的用户。分布式系统允许并发处理多个用户请求，但请求并不一定同时到达。</p>
+<p>与此相反，并行系统是指在同一时间点上同时执行多个任务的系统。在并行系统中，多个处理单元（如多核处理器、GPU等）同时执行不同的任务，以加速计算过程。这些任务可以是分解自一个大型计算任务，或者是独立的计算任务。并行系统通过将计算任务分割成小块并并行执行，可以显著提高计算速度和吞吐量。</p>
+<p>简而言之，分布式系统更关注在不同地理位置上的多个节点之间的通信和协调，以实现高可用性和容错性。而并行系统更关注同一时间点上的多个任务的并发执行，以提高计算性能。在分布式系统中，请求可以在不同时刻到达，而在并行系统中，任务是同时进行的。</p>
+</li>
+<li class="lvl-2">
+<p>首先，教授提到了在解决线性方程组时使用不同的方法。传统的高斯消元法可以使用高精度（大写字母表示）进行计算，但研究人员发现，使用不同的方法，比如迭代修正和小写精度（lowercase precision）进行计算，可以获得更高的浮点运算速率。这种方法被称为混合精度高性能 Linpack（mixed precision high performance linpack），可以达到 exaFLOP 级别的性能。然而，由于基准测试规则的限制，这种方法不被允许作为正式的记录。值得注意的是，尽管使用了不同的计算方法和精度，但最终得到的结果精度与传统方法相同。</p>
+<p>教授接着提到，在基准测试中，算法的进展并不被允许。这意味着基准测试主要关注计算机硬件的演进，而不是算法的改进。</p>
+<p>教授还提到了计算机发展的历史。在过去的25年里，集群系统（clusters）逐渐占据主导地位。然而，在过去，最快的超级计算机并不是基于集群系统的，而是采用共享内存系统（shared memory）或矢量计算机（vector machines）。这说明过去的计算机架构发展受制于大规模互连的困难，而当时CPU的发展速度非常快，以至于人们可以等待CPU性能提升而不需要投资昂贵的互连技术。</p>
+<p>教授还提到了编程这些计算机系统的方式的变化。在过去，对称多处理器（symmetric multiprocessors）、单一内存机器或矢量机器的编程可以借助编译器完成大部分工作。然而，随着集群系统的出现，依赖编译器进行并行计算的方式不再奏效，几乎所有人都需要从头开始重新思考算法并进行并行化。这意味着编写并行算法需要重新思考整个过程，而不是仅仅依靠编译器的自动优化。</p>
+<p>教授最后提到了一些关于超级计算机的统计数据，其中提到了加速器（accelerators）的使用情况，以及芯片技术的演进。目前，加速器（如GPU）在超级计算机中的使用约占三分之一。另外，AMD和基于ARM架构的处理器也在重新崛起，与Intel的CPU形成竞争。此外，由于更换整个超级计算机的成本高昂且升级的收益较低，许多超级计算中心的系统使用寿命增加，平均系统年龄较高。</p>
+</li>
+</ul>
 
       
     </div>
