@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://ucas-yanyang.github.io/Hexo_Notes/hexo_notes/image-20230620223310076.png">
 <meta property="og:image" content="https://ucas-yanyang.github.io/Hexo_Notes/hexo_notes/image-20230620223517875.png">
 <meta property="article:published_time" content="2023-06-20T14:22:40.000Z">
-<meta property="article:modified_time" content="2023-06-21T11:51:31.392Z">
+<meta property="article:modified_time" content="2023-06-21T12:24:06.030Z">
 <meta property="article:author" content="YY">
 <meta property="article:tag" content="Hexo">
 <meta property="article:tag" content="Experience">
@@ -186,7 +186,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-06-21 19:51:31" itemprop="dateModified" datetime="2023-06-21T19:51:31+08:00">2023-06-21</time>
+                <time title="Modified: 2023-06-21 20:24:06" itemprop="dateModified" datetime="2023-06-21T20:24:06+08:00">2023-06-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -260,24 +260,28 @@
 <p><code>url: https://ucas-yanyang.github.io/</code>，这个链接到你的主页网址</p>
 </li>
 <li class="lvl-4">
-<p><code>permalink: :title/</code>，这里的<code>:title</code>为<code>source/_post</code>下的相对路径</p>
+<p><code>permalink: :title/</code>，这里的<code>:title</code>为<code>source/_post</code>下的相对路径，改配置选项与博文的url直接相关，每个md开头的yaml格式的配置中的<code>permalink</code>会覆盖全局<code>_config.yml</code>的</p>
 </li>
 <li class="lvl-4">
 <p><code>post_asset_folder: true</code>，这个在后面插图片的时候有用</p>
 </li>
 <li class="lvl-4">
-<pre><code class="language-bash">deploy:
-type: git
-repository: git@github.com:UCAS-YanYang/UCAS-YanYang.github.io.git  #你的仓库地址
-branch: master
-</code></pre>
-<p>repository要写成<code>git@</code>的仓库链接，用https的可能会因为vpn问题提交/部署不了，<code>branch</code>部分要注意仓库的默认分支是main还是master</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dsdsd</span><br><span class="line">ddd</span><br><span class="line">d</span><br></pre></td></tr></table></figure>
+<p>（预留一行…）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repository: git@github.com:UCAS-YanYang/UCAS-YanYang.github.io.git <span class="comment">#你的仓库地址</span></span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<p>repository要写成<code>git@</code>的仓库链接，用https的可能会因为vpn问题提交/部署不了，<code>branch</code>部分要注意仓库的默认分支是main还是master。</p>
 </li>
 </ul>
 </li>
 <li class="lvl-2">
-<p>Hexo本地与部署不一致问题：</p>
+<p>代码块问题：</p>
+<ul class="lvl-2">
+<li class="lvl-4">用typora写作时，快捷键代码块是看不到```部分的，如果不小心敲错```的个数会出现页面渲染错误（但在typora界面看不出来），部署后发现错误应该通过Vscode打开文件检查，hexo应该只能渲染三个反引号框住的代码块。</li>
+<li class="lvl-4">每个节点+（或*）之后如果要添加代码块，要预留一行（如上），不然hexo会渲染错误。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>通常情况下，Hexo 默认会将 <code>_posts</code> 目录下的所有 Markdown 文件视为博文，并根据文件的日期和文件名来生成博文的 URL。如果你在 <code>_posts</code> 目录下创建了文件夹，那么该文件夹下的 Markdown 文件也会被 Hexo 视为博文，并按照相应的规则进行处理。</p>
+<p>例如，假设你在 <code>_posts</code> 目录下创建了一个名为 <code>my-folder</code> 的文件夹，并在其中放置了一个名为 <code>my-article.md</code> 的 Markdown 文件。那么 Hexo 会将该 Markdown 文件视为一个博文，并将其 URL 生成规则应用于该文件。</p>
 </li>
 <li class="lvl-2">
 <p>写作流程：</p>
