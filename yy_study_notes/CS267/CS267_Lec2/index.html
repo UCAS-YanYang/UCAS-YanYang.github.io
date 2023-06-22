@@ -28,7 +28,7 @@
 <meta property="og:description" content="This course is about Memory Hierarchies and Matrix Multiplication.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-06-22T07:34:19.000Z">
-<meta property="article:modified_time" content="2023-06-22T07:40:17.683Z">
+<meta property="article:modified_time" content="2023-06-22T14:49:34.974Z">
 <meta property="article:author" content="YY">
 <meta property="article:tag" content="Parallel Computing">
 <meta name="twitter:card" content="summary">
@@ -175,7 +175,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2023-06-22 15:34:19 / Modified: 15:40:17" itemprop="dateCreated datePublished" datetime="2023-06-22T15:34:19+08:00">2023-06-22</time>
+              <time title="Created: 2023-06-22 15:34:19 / Modified: 22:49:34" itemprop="dateCreated datePublished" datetime="2023-06-22T15:34:19+08:00">2023-06-22</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -199,9 +199,56 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <ul class="lvl-0">
+        <h3 id="Content">Content</h3>
+<ul class="lvl-0">
 <li class="lvl-2">
-<p>f</p>
+</li>
+</ul>
+<h3 id="Remark">Remark</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>“under the hood”，它是一个常用的表达，意味着在某个系统或产品的背后或内部工作原理中。</p>
+</li>
+<li class="lvl-2">
+<p>编译器可以将循环展开(unroll loops)，这意味着在循环内部直接访问数组的子项，例如 a[i]、a[i+1]、a[i+2]、a[i+3]，而不是按顺序迭代每个 i 的值。比如我们写了一个循环</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">processArray</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> length)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">        arr[i] *= <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>编译器可以自动判断这个循环是简单的递增循环，然后决定对其进行展开。例如，编译器可能会将循环展开为以下形式：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">processArray</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> length)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; length; i += <span class="number">4</span>) &#123;</span><br><span class="line">        arr[i] *= <span class="number">2</span>;</span><br><span class="line">        arr[i + <span class="number">1</span>] *= <span class="number">2</span>;</span><br><span class="line">        arr[i + <span class="number">2</span>] *= <span class="number">2</span>;</span><br><span class="line">        arr[i + <span class="number">3</span>] *= <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li class="lvl-2">
+<p>在编程中是否经常使用汇编语言?: 教授提到了在特定的算法中，人们可以通过使用一个名为BLAS（Basic Linear Algebra Subroutines）的小型库来隐藏大部分与特定机器相关的优化。BLAS库包含了矩阵乘法、矩阵向量乘法等基本线性代数子程序。这是一个标准库，全世界都同意使用的标准接口。在该接口之下，由各个供应商负责进行优化。例如，Intel拥有自己的一支优化团队，专门针对其平台进行矩阵乘法的优化，其他公司也会采取类似的做法。当你编写代码时，你会调用矩阵乘法函数，无论你所在的平台是什么，都会使用供应商优化过的版本。因此，对于线性代数的计算，已经确定了这个接口，在接口以下由供应商负责，在接口以上由程序员负责。然而，在其他领域，尤其是与稠密线性代数一样被广泛理解的领域，情况可能并不相同，仍然需要进行大量的工作和优化。</p>
+</li>
+<li class="lvl-2">
+<p>首先，缓存是用来解决内存速度和处理器速度之间的差异的。由于缓存的容量有限，无法存储所有数据，所以需要决定将哪些数据放入缓存中以便快速访问。这里提到了两种基本的缓存映射方式：直接映射和关联映射。</p>
+<ul class="lvl-2">
+<li class="lvl-4">直接映射缓存（Direct Mapped Cache）是一种简单的缓存方式。根据内存地址的最后几位来确定缓存中的位置，因此相同最后几位的地址会映射到同一个缓存条目中。这种缓存方式只能存储一个数据项，如果两个不同的内存项具有相同的最后几位地址，那么只能选择一个存储在缓存中。</li>
+<li class="lvl-4">关联映射缓存（Associative Cache）允许在缓存中存储具有相同最后几位地址的多个数据项。缓存需要跟踪在同一时间内具有相同最后几位地址的不同数据项的数量。这种缓存方式能够提高并发性和空间局部性的性能，特别适用于按列访问矩阵等情况。</li>
+</ul>
+<p>此外，还提到了空间局部性（Spatial Locality）的概念。当处理器访问内存的特定位置时，它会尽量获取附近的数据项，以利用空间局部性的特性。例如，在按行访问矩阵时，由于相邻的元素地址相近，可以一次性将整行的数据加载到缓存中，从而提高访问效率。</p>
+<p>最后，提到了为什么需要多级缓存。由于芯片上的缓存容量有限，如果需要更大的缓存，就必须通过外部的更大缓存来满足需求。但是，由于更大缓存的地址检索需要更多的时间，因此需要在多级缓存中进行权衡和优化，以平衡速度和容量的需求。通过以下例子加深理解：</p>
+<p>Suppose we have a 1024*1024 matrix stored row-wise, the last 10 bits of entries at the same collum are going to agree (在二进制表示中，1024用10位表示为 <code>10000000000</code>。因此，最后10位可以表示每一列的索引。)</p>
+</li>
+<li class="lvl-2">
+<p>教授首先提到了在芯片上的缓存（on-chip caches）比在芯片外的缓存更快，因为避免了在芯片外部慢速的电路传输。然而，由于芯片上的缓存需要适应有限的芯片空间，所以它们的大小也受到限制。为了拥有更大的缓存，就需要通过与芯片外的存储器进行通信，但这会增加访问时间，因为需要检查更长的地址。此外，如果缓存具有更大的关联度（associativity），以获取更一般的数据集，也会增加访问时间。</p>
+<p>因此，并不总是通过增加更多级别的缓存来获得更好的性能。有时候，为了减少访问时间，可以减少缓存级别。教授举了历史上一些例子，如Cray T3E超级计算机和Intel Haswell处理器中采取的优化措施，以减少缓存未命中带来的性能损失。</p>
+<p>此外，教授还提到了内存层次结构中的其他层级，如磁盘存储和页面（page）等。对于数据无法完全存放在动态随机存取存储器（DRAM）中的情况，数据可能需要存放在磁盘中，并以页面为单位进行管理。此外，内存层次结构并不一定是简单的缓存层次结构，可能更加复杂，例如在GPU编程中会遇到。</p>
+<p>在这段讲解中，&quot;check you are missing&quot;指的是在访问缓存时进行的检查操作，以确定数据是否在缓存中存在。当程序访问某个数据时，处理器首先检查最高级别的缓存（比如Level 1缓存），如果数据不在该缓存中（即发生缓存未命中），则继续检查下一级别的缓存，直到找到数据或者最终确定数据不在任何缓存中。</p>
+<p>这个检查过程涉及多个级别的缓存，每个级别都需要查找和比较数据。如果缓存未命中率很高，即需要经常进行这样的检查操作，那么会增加处理器的访问延迟和性能损失。为了减少检查操作的次数，提高处理器的访问效率，一些架构可能会减少缓存级别或进行优化调整。</p>
+<p>在这个具体的例子中，由于缓存未命中的次数足够多，检查每个缓存级别的过程变得很慢。为了减少检查次数，他们决定去掉一个缓存级别，从而降低了检查的复杂性和开销。这样做可以减少不必要的检查操作，提高处理器的访问速度。</p>
+</li>
+<li class="lvl-2">
+<p>Little’s Law: 考虑如下问题：</p>
+<ul class="lvl-2">
+<li class="lvl-4">已知你正在就读的大学每年从全国各地招收2000名学生， 每名学生均需要4年才能毕业离校，请估算目前在你们大学就读的学生总人数。</li>
+</ul>
+<p>这道题目的答案是8000 (2000 * 4)， 原因是你的大学一直保持着4年招收学生的人数，而每年学校招收2000人，因此得出答案。</p>
+<p>描述的是系统中<strong>平均物体的数量</strong>。</p>
+<p>假设有一个网络传输系统，其中有一个数据传输链路，带宽为10 Mbps（兆比特每秒），延迟为10毫秒（以传输一个数据包所需的时间）。</p>
+<p>根据Little定律，我们可以计算出所需的并发性，即同时在传输链路上存在的数据包数量。根据公式 “并发性 = 延迟 * 带宽”，将延迟和带宽相乘，得到并发性的值。</p>
+<p>并发性 = 10毫秒 * 10 Mbps = 100 比特（bits）</p>
+<p>这意味着为了充分利用这个传输链路的带宽，需要在传输过程中保持100个独立的比特（数据包）在in flight。如果并发性低于这个值，那么传输链路的带宽就无法被充分利用。</p>
+<p>例如，如果只有50个比特同时在传输链路上，那么无论带宽有多大，实际的传输速度都不会达到10 Mbps。只有当有100个独立的比特同时在传输链路上时，才能充分利用带宽，达到最大的传输速度。</p>
+<p>以上是从<strong>平均</strong>意义上的理解，当然也可以理解为，管道里有100比特的数据刚开始传，此时发送下一批数据，刚好管道里的数据传完以后，下一批数据度过latency后到达管道。</p>
 </li>
 </ul>
 
@@ -284,6 +331,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Content"><span class="nav-number">1.</span> <span class="nav-text">Content</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Remark"><span class="nav-number">2.</span> <span class="nav-text">Remark</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
