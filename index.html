@@ -259,7 +259,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-06-21 22:32:37" itemprop="dateModified" datetime="2023-06-21T22:32:37+08:00">2023-06-21</time>
+                <time title="Modified: 2023-06-22 13:17:31" itemprop="dateModified" datetime="2023-06-22T13:17:31+08:00">2023-06-22</time>
               </span>
 
           
@@ -274,6 +274,7 @@
 
       
           <p>This lecture is an overview of <strong>Parallel Computing</strong></p>
+<p>Course homepage: <a target="_blank" rel="noopener" href="https://sites.google.com/lbl.gov/cs267-spr2022/">CS267 Spring 2022 (google.com)</a>.</p>
 <h3 id="Content">Content</h3>
 <ul class="lvl-0">
 <li class="lvl-2">
@@ -302,13 +303,44 @@
 <li class="lvl-2">
 <p>Parallel Computer vs. Distributed System</p>
 </li>
+<li class="lvl-2">
+<p>Application:</p>
+<ul class="lvl-2">
+<li class="lvl-4">7 “dwarfs” of scientific simulation</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>Moore’s Law: the transistor density of semiconductor chips (e.g. CPU) would  double roughly every 18 months.</p>
+</li>
+<li class="lvl-2">
+<p>But, there are some limits regarding to sequential machine:</p>
+<ul class="lvl-2">
+<li class="lvl-4">
+<p>Size limits: Data must travel distance, r, from memory to processor,  so the data needs to live really within a certain area. This mean the size of chip has upper bound;</p>
+</li>
+<li class="lvl-4">
+<p><strong>Power limits: $P=V^2fC$, increase cores in a chip and share $f$ through multiple chips （by designing parallel algorithms）to decrease $f$  in each chip, decreasing the dynamic power</strong></p>
+</li>
+<li class="lvl-4">
+<p><strong>Reinterpret  Moore’s Law: transistor density would  double --&gt; number of cores per chip can double, but cpu size need not to be larger, clock speed will not increase (possibly decrease).</strong></p>
+</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>Amdahl’s Law.</p>
+</li>
 </ul>
 <h3 id="Remark">Remark</h3>
 <ul class="lvl-0">
 <li class="lvl-2">
 <p>“chips” 一词通常指的是计算机系统中的芯片（chips），也称为集成电路芯片（integrated circuit chips）。芯片是一种由半导体材料制成的小型电子设备，其中包含了大量的电子元件，例如晶体管、电阻器和电容器等。</p>
 <p>在并行计算领域，芯片通常指代计算机处理器芯片（processor chip），也称为中央处理器（Central Processing Unit, CPU）。处理器芯片是计算机的核心组件，负责执行计算和控制计算机的操作。</p>
-<p>此外，根据上下文，“chips” 还可能指代其他类型的芯片或集成电路，如图形处理器（Graphics Processing Unit, GPU）芯片、协处理器芯片（如英特尔的Xeon Phi）、网络接口芯片、内存控制器芯片等，这些芯片在特定的计算任务中扮演着重要角色。</p>
+<p>此外，根据上下文，“chips” 还可能指代其他类型的芯片或集成电路，如图形处理器（Graphics Processing Unit, GPU）芯片、协处理器芯片（如英特尔的Xeon Phi）、网络接口芯片、内存控制器芯片等，这些芯片在特定的计算任务中扮演着重要角色。<br>
+CPU和GPU都是芯片（chip）的一部分。芯片（chip）是指集成电路（Integrated Circuit，简称IC）的一种常见称呼，它包含了多个电子器件（如晶体管、电阻、电容等）和电路组件（如逻辑门、存储单元等），用于实现特定的功能。</p>
+<p>在一块芯片中，可能包含一个或多个核心（core）。核心是处理器的核心部分，用于执行指令和计算任务。CPU和GPU都可以具有多个核心，每个核心都是一个独立的处理单元，可以同时执行指令和计算操作。</p>
+</li>
+<li class="lvl-2">
+<p><strong>processor 可以指中央处理器（CPU）或图形处理器（GPU），也可以是一个cpu中相对于memory（内存）的processor（处理器，由多核core组成）</strong></p>
 </li>
 <li class="lvl-2">
 <p>node: node can include multiple sockets of multicore chips and these nodes can be connected to each other in some sort of cabinet:</p>
@@ -330,6 +362,27 @@
 <p>教授还提到了计算机发展的历史。在过去的25年里，集群系统（clusters）逐渐占据主导地位。然而，在过去，最快的超级计算机并不是基于集群系统的，而是采用共享内存系统（shared memory）或矢量计算机（vector machines）。这说明过去的计算机架构发展受制于大规模互连的困难，而当时CPU的发展速度非常快，以至于人们可以等待CPU性能提升而不需要投资昂贵的互连技术。</p>
 <p>教授还提到了编程这些计算机系统的方式的变化。在过去，对称多处理器（symmetric multiprocessors）、单一内存机器或矢量机器的编程可以借助编译器完成大部分工作。然而，随着集群系统的出现，依赖编译器进行并行计算的方式不再奏效，几乎所有人都需要从头开始重新思考算法并进行并行化。这意味着编写并行算法需要重新思考整个过程，而不是仅仅依靠编译器的自动优化。</p>
 <p>教授最后提到了一些关于超级计算机的统计数据，其中提到了加速器（accelerators）的使用情况，以及芯片技术的演进。目前，加速器（如GPU）在超级计算机中的使用约占三分之一。另外，AMD和基于ARM架构的处理器也在重新崛起，与Intel的CPU形成竞争。此外，由于更换整个超级计算机的成本高昂且升级的收益较低，许多超级计算中心的系统使用寿命增加，平均系统年龄较高。</p>
+</li>
+<li class="lvl-2">
+<p>“Clock frequency”（时钟频率）指的是中央处理器（CPU）内部时钟的速度，也称为时钟速度或时钟周期。它表示CPU每秒钟执行的振荡次数。时钟频率通常以赫兹（Hz）为单位表示，表示每秒的振荡次数。</p>
+<p>CPU的时钟频率决定了CPU的工作速度，即它能够在单位时间内执行的指令数量。较高的时钟频率意味着CPU能够更快地执行指令，从而提供更高的计算性能。时钟频率与CPU的内部处理速度和电流消耗有关，较高的频率通常需要更高的电源功率和散热能力。</p>
+<p>时钟频率不仅受到CPU设计和制造的限制，还受到电源供应、散热解决方案和电子元件的物理特性等因素的影响。为了满足不同的应用需求，CPU制造商可以在不同的产品系列中提供不同的时钟频率选择。时钟频率通常在产品规格中公开，用于比较和选择适合特定需求的CPU。</p>
+<p>需要注意的是，时钟频率仅是衡量CPU性能的一个指标，还有其他因素（如架构、缓存、指令集等）也会影响CPU的整体性能。因此，在比较和选择CPU时，不仅要考虑时钟频率，还需综合考虑其他因素。</p>
+</li>
+<li class="lvl-2">
+<p>教授谈到了集成电路中的晶体管尺寸缩小对性能的影响以及推动并行计算的原因。</p>
+<p>教授首先提到，当晶体管的尺寸缩小时，时钟频率会提高，因为导线变短。这是因为导线长度的减小会减少信号传输的延迟。然而，随着晶体管尺寸进一步缩小，会引发功耗泄露等问题，这导致时钟频率提高不再成比例。</p>
+<p>然后教授提到，晶体管的面积与尺寸的平方成正比。因此，单位面积内的晶体管数量会增加。通常情况下，芯片的面积也会随之增大。这使得每个芯片内的晶体管数量大致是尺寸的平方。</p>
+<p>接下来，教授讨论了实际计算能力的增长。他指出，根据以上的尺寸和频率变化，实际计算能力理论上可以增加到尺寸的四次方。这是由尺寸的平方、时钟频率和芯片面积的增加共同推动的。</p>
+<p>然而，教授进一步提到了这种增长的限制。他以一个以1字节数据进行计算的顺序机器的例子进行说明。为了保证高速计算，数据需要尽可能接近处理器。然而，如果数据和处理器的距离超过一定范围，数据传输速度将无法满足每秒1 TB的速率要求。根据计算，为了在这一区域内放置1 TB的存储器，每个比特将需要占据1个平方埃的面积，这是一个非常小的尺寸，相当于一个小原子的大小。</p>
+<p>因此，教授指出，即使这种极端情况发生，也将达到物理上的限制。为了获得更高的性能，提高并行性是唯一的选择。</p>
+<p>综上所述，教授通过晶体管尺寸缩小对性能的影响和物理限制的讨论，阐述了为什么需要并行计算来推动计算性能的进一步提升。</p>
+</li>
+<li class="lvl-2">
+<p>教授讨论了处理器技术的发展和相关的挑战。首先，他提到了功耗和热量问题。随着晶体管的不断缩小，功耗和热量变得难以控制，如果继续按照过去增加频率的方式发展，最终会达到太阳表面的功率密度，这是不可持续的。为了解决这个问题，人们放弃了增加频率，而是增加了晶体管密度，通过增加并行性和核心数来提高计算能力。这不仅解决了功耗问题，还减少了串行处理器浪费的能源。</p>
+<p>教授还提到了&quot;Dennard scaling&quot;，这是指晶体管尺寸按照一定比例缩小，面积大幅减少，功耗也相应减少50%的理想情况。然而，由于漏电问题，这种缩放已经不再有效。</p>
+<p>另外，教授提到了并行性对于芯片制造商的好处。由于制造过程中的缺陷，他们不得不丢弃很多处理器。如果在单个处理器中有很多核心，他们可以在制造时设定一个较高的目标，即使有部分核心是坏的，也不影响性能，因为对外宣传的是只有几个核心是正常的。这样可以提高产量和利润。</p>
+<p>最后，教授指出，随着时间的推移，软件将承担更大的责任，通过提取更多的并行性来提供更好的性能。他重新解释了摩尔定律，即每两年芯片上的核心数量可以翻倍。</p>
 </li>
 </ul>
 
