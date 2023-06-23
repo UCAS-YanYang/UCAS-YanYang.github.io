@@ -27,11 +27,15 @@
 <meta property="og:site_name" content="装作爱学习的YY的Blog">
 <meta property="og:description" content="This course is about Memory Hierarchies and Matrix Multiplication.">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://ucas-yanyang.github.io/yy_study_notes/CS267/CS267_Lec2/image-20230623160150283.png">
+<meta property="og:image" content="https://ucas-yanyang.github.io/yy_study_notes/CS267/CS267_Lec2/image-20230623160726355.png">
+<meta property="og:image" content="https://ucas-yanyang.github.io/yy_study_notes/CS267/CS267_Lec2/image-20230623161203322.png">
 <meta property="article:published_time" content="2023-06-22T07:34:19.000Z">
-<meta property="article:modified_time" content="2023-06-22T14:49:34.974Z">
+<meta property="article:modified_time" content="2023-06-23T08:46:35.800Z">
 <meta property="article:author" content="YY">
 <meta property="article:tag" content="Parallel Computing">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ucas-yanyang.github.io/yy_study_notes/CS267/CS267_Lec2/image-20230623160150283.png">
 
 <link rel="canonical" href="https://ucas-yanyang.github.io/yy_study_notes/CS267/CS267_Lec2/">
 
@@ -173,10 +177,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2023-06-22 15:34:19 / Modified: 22:49:34" itemprop="dateCreated datePublished" datetime="2023-06-22T15:34:19+08:00">2023-06-22</time>
+              <time title="Created: 2023-06-22 15:34:19" itemprop="dateCreated datePublished" datetime="2023-06-22T15:34:19+08:00">2023-06-22</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-06-23 16:46:35" itemprop="dateModified" datetime="2023-06-23T16:46:35+08:00">2023-06-23</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -199,36 +209,97 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="Content">Content</h3>
-<ul class="lvl-0">
-<li class="lvl-2">
+        <h3 id="content"><a class="markdownIt-Anchor" href="#content"></a> Content</h3>
+<ul>
+<li>
+<p>Start with single processors:</p>
+<ul>
+<li>we can get speedup only using a single core</li>
+<li>parallelizing slow serial code only produces slow parallel code</li>
+<li>so at the beginning, we should realize the principle of a single processor</li>
+</ul>
+</li>
+<li>
+<p>Processors and resisters</p>
+<ul>
+<li>
+<p>Idealized Uniprocessor Model:</p>
+<img src="/yy_study_notes/CS267/CS267_Lec2/image-20230623160150283.png" alt="image-20230623160150283" style="zoom:67%;">
+<p>getting data from memory costs <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>100</mn><mo>×</mo></mrow><annotation encoding="application/x-tex">100\times</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span><span class="mord">×</span></span></span></span> time than one basic operation</p>
+</li>
+<li>
+<p>Compilers Manage Memory and Registers:</p>
+<ul>
+<li>generate graph of variables</li>
+<li>2 nodes connected mean separate values for them before <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇒</mo></mrow><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇒</span></span></span></span> nodes must be colored differently</li>
+<li>fewest colors <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇔</mo></mrow><annotation encoding="application/x-tex">\Leftrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇔</span></span></span></span> fewest registers</li>
+<li>this become the graph coloring problem</li>
+<li>
+<img src="/yy_study_notes/CS267/CS267_Lec2/image-20230623160726355.png" alt="image-20230623160726355" style="zoom:67%;">
 </li>
 </ul>
-<h3 id="Remark">Remark</h3>
-<ul class="lvl-0">
-<li class="lvl-2">
+</li>
+</ul>
+</li>
+<li>
+<p>Memory hierarchies:</p>
+<ul>
+<li>spatial locality and temporal locality</li>
+<li>
+<img src="/yy_study_notes/CS267/CS267_Lec2/image-20230623161203322.png" alt="image-20230623161203322" style="zoom:67%;">
+</li>
+<li>Cache basics</li>
+<li>Memory Benchmark: we can estimate size of each level of caches by increasing size of arrays and labeling the cliff in speed-array_size figure</li>
+<li>Little’s Law</li>
+</ul>
+</li>
+<li>
+<p>Even “serial” processors use parallelism</p>
+<ul>
+<li>“Pipeline”: Instruction level parallelism (ILP): need to consider instruction mix</li>
+<li>SIMD instructions</li>
+<li>FMA</li>
+</ul>
+</li>
+<li>
+<p>Some about compilers:</p>
+<ul>
+<li>They need to work conservatively</li>
+<li>Dependencies are a big source of problems for the compiler</li>
+<li>It needs our help:  like rearranging your code to make things more obvious or set optimization flags</li>
+</ul>
+</li>
+<li>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>f</mi><mi>d</mi><mi>f</mi><mi>s</mi><mo>=</mo><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">fdfs=f(x)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">d</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span></span></p>
+</li>
+<li></li>
+</ul>
+<h3 id="remark"><a class="markdownIt-Anchor" href="#remark"></a> Remark</h3>
+<ul>
+<li>
 <p>“under the hood”，它是一个常用的表达，意味着在某个系统或产品的背后或内部工作原理中。</p>
 </li>
-<li class="lvl-2">
+<li>
 <p>编译器可以将循环展开(unroll loops)，这意味着在循环内部直接访问数组的子项，例如 a[i]、a[i+1]、a[i+2]、a[i+3]，而不是按顺序迭代每个 i 的值。比如我们写了一个循环</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">processArray</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> length)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">        arr[i] *= <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>编译器可以自动判断这个循环是简单的递增循环，然后决定对其进行展开。例如，编译器可能会将循环展开为以下形式：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">processArray</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> length)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; length; i += <span class="number">4</span>) &#123;</span><br><span class="line">        arr[i] *= <span class="number">2</span>;</span><br><span class="line">        arr[i + <span class="number">1</span>] *= <span class="number">2</span>;</span><br><span class="line">        arr[i + <span class="number">2</span>] *= <span class="number">2</span>;</span><br><span class="line">        arr[i + <span class="number">3</span>] *= <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li class="lvl-2">
+<li>
 <p>在编程中是否经常使用汇编语言?: 教授提到了在特定的算法中，人们可以通过使用一个名为BLAS（Basic Linear Algebra Subroutines）的小型库来隐藏大部分与特定机器相关的优化。BLAS库包含了矩阵乘法、矩阵向量乘法等基本线性代数子程序。这是一个标准库，全世界都同意使用的标准接口。在该接口之下，由各个供应商负责进行优化。例如，Intel拥有自己的一支优化团队，专门针对其平台进行矩阵乘法的优化，其他公司也会采取类似的做法。当你编写代码时，你会调用矩阵乘法函数，无论你所在的平台是什么，都会使用供应商优化过的版本。因此，对于线性代数的计算，已经确定了这个接口，在接口以下由供应商负责，在接口以上由程序员负责。然而，在其他领域，尤其是与稠密线性代数一样被广泛理解的领域，情况可能并不相同，仍然需要进行大量的工作和优化。</p>
 </li>
-<li class="lvl-2">
+<li>
 <p>首先，缓存是用来解决内存速度和处理器速度之间的差异的。由于缓存的容量有限，无法存储所有数据，所以需要决定将哪些数据放入缓存中以便快速访问。这里提到了两种基本的缓存映射方式：直接映射和关联映射。</p>
-<ul class="lvl-2">
-<li class="lvl-4">直接映射缓存（Direct Mapped Cache）是一种简单的缓存方式。根据内存地址的最后几位来确定缓存中的位置，因此相同最后几位的地址会映射到同一个缓存条目中。这种缓存方式只能存储一个数据项，如果两个不同的内存项具有相同的最后几位地址，那么只能选择一个存储在缓存中。</li>
-<li class="lvl-4">关联映射缓存（Associative Cache）允许在缓存中存储具有相同最后几位地址的多个数据项。缓存需要跟踪在同一时间内具有相同最后几位地址的不同数据项的数量。这种缓存方式能够提高并发性和空间局部性的性能，特别适用于按列访问矩阵等情况。</li>
+<ul>
+<li>直接映射缓存（Direct Mapped Cache）是一种简单的缓存方式。根据内存地址的最后几位来确定缓存中的位置，因此相同最后几位的地址会映射到同一个缓存条目中。这种缓存方式只能存储一个数据项，如果两个不同的内存项具有相同的最后几位地址，那么只能选择一个存储在缓存中。</li>
+<li>关联映射缓存（Associative Cache）允许在缓存中存储具有相同最后几位地址的多个数据项。缓存需要跟踪在同一时间内具有相同最后几位地址的不同数据项的数量。这种缓存方式能够提高并发性和空间局部性的性能，特别适用于按列访问矩阵等情况。</li>
 </ul>
 <p>此外，还提到了空间局部性（Spatial Locality）的概念。当处理器访问内存的特定位置时，它会尽量获取附近的数据项，以利用空间局部性的特性。例如，在按行访问矩阵时，由于相邻的元素地址相近，可以一次性将整行的数据加载到缓存中，从而提高访问效率。</p>
 <p>最后，提到了为什么需要多级缓存。由于芯片上的缓存容量有限，如果需要更大的缓存，就必须通过外部的更大缓存来满足需求。但是，由于更大缓存的地址检索需要更多的时间，因此需要在多级缓存中进行权衡和优化，以平衡速度和容量的需求。通过以下例子加深理解：</p>
 <p>Suppose we have a 1024*1024 matrix stored row-wise, the last 10 bits of entries at the same collum are going to agree (在二进制表示中，1024用10位表示为 <code>10000000000</code>。因此，最后10位可以表示每一列的索引。)</p>
 </li>
-<li class="lvl-2">
+<li>
 <p>教授首先提到了在芯片上的缓存（on-chip caches）比在芯片外的缓存更快，因为避免了在芯片外部慢速的电路传输。然而，由于芯片上的缓存需要适应有限的芯片空间，所以它们的大小也受到限制。为了拥有更大的缓存，就需要通过与芯片外的存储器进行通信，但这会增加访问时间，因为需要检查更长的地址。此外，如果缓存具有更大的关联度（associativity），以获取更一般的数据集，也会增加访问时间。</p>
 <p>因此，并不总是通过增加更多级别的缓存来获得更好的性能。有时候，为了减少访问时间，可以减少缓存级别。教授举了历史上一些例子，如Cray T3E超级计算机和Intel Haswell处理器中采取的优化措施，以减少缓存未命中带来的性能损失。</p>
 <p>此外，教授还提到了内存层次结构中的其他层级，如磁盘存储和页面（page）等。对于数据无法完全存放在动态随机存取存储器（DRAM）中的情况，数据可能需要存放在磁盘中，并以页面为单位进行管理。此外，内存层次结构并不一定是简单的缓存层次结构，可能更加复杂，例如在GPU编程中会遇到。</p>
@@ -236,10 +307,10 @@
 <p>这个检查过程涉及多个级别的缓存，每个级别都需要查找和比较数据。如果缓存未命中率很高，即需要经常进行这样的检查操作，那么会增加处理器的访问延迟和性能损失。为了减少检查操作的次数，提高处理器的访问效率，一些架构可能会减少缓存级别或进行优化调整。</p>
 <p>在这个具体的例子中，由于缓存未命中的次数足够多，检查每个缓存级别的过程变得很慢。为了减少检查次数，他们决定去掉一个缓存级别，从而降低了检查的复杂性和开销。这样做可以减少不必要的检查操作，提高处理器的访问速度。</p>
 </li>
-<li class="lvl-2">
+<li>
 <p>Little’s Law: 考虑如下问题：</p>
-<ul class="lvl-2">
-<li class="lvl-4">已知你正在就读的大学每年从全国各地招收2000名学生， 每名学生均需要4年才能毕业离校，请估算目前在你们大学就读的学生总人数。</li>
+<ul>
+<li>已知你正在就读的大学每年从全国各地招收2000名学生， 每名学生均需要4年才能毕业离校，请估算目前在你们大学就读的学生总人数。</li>
 </ul>
 <p>这道题目的答案是8000 (2000 * 4)， 原因是你的大学一直保持着4年招收学生的人数，而每年学校招收2000人，因此得出答案。</p>
 <p>描述的是系统中<strong>平均物体的数量</strong>。</p>
@@ -249,6 +320,67 @@
 <p>这意味着为了充分利用这个传输链路的带宽，需要在传输过程中保持100个独立的比特（数据包）在in flight。如果并发性低于这个值，那么传输链路的带宽就无法被充分利用。</p>
 <p>例如，如果只有50个比特同时在传输链路上，那么无论带宽有多大，实际的传输速度都不会达到10 Mbps。只有当有100个独立的比特同时在传输链路上时，才能充分利用带宽，达到最大的传输速度。</p>
 <p>以上是从<strong>平均</strong>意义上的理解，当然也可以理解为，管道里有100比特的数据刚开始传，此时发送下一批数据，刚好管道里的数据传完以后，下一批数据度过latency后到达管道。</p>
+</li>
+<li>
+<p>RAM（Random Access Memory）是计算机中用于临时存储数据和指令的主要内存。RAM是一种易失性存储器，意味着当计算机关闭或断电时，RAM中存储的数据会被清除。RAM的作用是提供给CPU快速访问数据和指令的空间，以便有效地执行程序。RAM的容量通常以字节（例如GB、TB）来衡量。</p>
+<p>DRAM（Dynamic Random Access Memory）是一种常见的RAM类型，它是由电容和晶体管构成的存储单元组成。DRAM存储单元中的电容可以存储数据，但电容会逐渐丧失电荷，因此需要定期刷新以保持数据的正确性。相比于其他类型的RAM（如SRAM，静态随机存储器），DRAM具有较高的存储密度和较低的成本，但读取和写入速度相对较慢。</p>
+<p>简而言之，RAM是计算机的主要内存，用于存储正在执行的程序和数据，而DRAM是一种常见的RAM技术，用于构建大容量的主存储器。</p>
+</li>
+<li>
+<p>在CPU中，存在多级缓存（Cache），其中包括L1 Cache、L2 Cache、L3 Cache等。这些缓存是位于CPU内部的快速存储器，用于临时存储CPU频繁访问的数据和指令，以提高数据访问速度和整体性能。</p>
+<p>缓存是根据数据的局部性原理设计的，它利用了时间局部性和空间局部性的特性。当CPU需要访问数据时，它首先会查找最近的缓存层级（通常是L1 Cache），如果数据在缓存中找到（命中），CPU可以快速获取数据。如果数据不在缓存中（缓存未命中），CPU需要从更慢的主内存（RAM）中获取数据，并将数据存储到缓存中以备后续使用。</p>
+</li>
+<li>
+<p>“Pipeline”（流水线）这个术语来源于工业生产中的流水线装配过程，它指的是将一个复杂的任务分解为多个连续的子任务，并通过并行处理这些子任务来提高整体效率。</p>
+<p>在计算机系统中，“pipeline” 是一种类似的概念，指的是将指令或操作分解为多个阶段，并使这些阶段并行执行，以提高整体的处理速度和效率。每个阶段完成特定的任务，并将结果传递给下一个阶段。这种流水线结构使得多个操作可以同时进行，从而在单位时间内处理更多的操作，提高了系统的吞吐量。</p>
+<p>教授在讲解中提到了几个应用了流水线技术的例子：</p>
+<ol>
+<li>指令执行：计算机中的指令执行通常使用流水线方式。指令被分解为多个阶段（如取指、译码、执行、写回等），每个阶段独立并行执行。这样，当一个指令在执行阶段时，下一条指令可以进入译码阶段，从而提高了指令的执行效率。</li>
+<li>计算单元中的操作：在计算单元（如浮点单元）中，复杂的操作可以通过流水线技术进行分解和并行执行。例如，浮点乘法和加法可以被分解为多个阶段，并在流水线中同时执行，从而提高了浮点运算的吞吐量。</li>
+<li>存储器访问：在处理器与内存之间的数据传输过程中，也可以采用流水线方式来提高效率。数据读取和写入可以分解为多个阶段，并在流水线中并行进行，以减少访问延迟。</li>
+</ol>
+<p>通过在硬件层面应用流水线技术，可以利用并行处理来提高计算机系统的性能和效率。流水线技术的应用范围广泛，不仅局限于上述示例，还可以在处理器设计、图形处理器、网络处理器等领域中发挥重要作用。</p>
+<p>教授提到了一个例子，即浮点乘法可能需要多个时钟周期（cycles）才能完成一次操作。如果连续进行多个浮点乘法操作，可以利用流水线技术来提高效率。</p>
+<p>“Cycle”（时钟周期）是计算机中的一个基本时间单位，用于衡量硬件操作的时间。每个时钟周期表示计算机中的一个时钟脉冲的持续时间，也可以看作是计算机中的一个基本时序单位。在每个时钟周期内，计算机的各个部件进行操作、传输数据等。</p>
+<p>在教授的例子中，假设浮点乘法需要10个时钟周期才能完成一次操作。如果有一系列连续的浮点乘法需要执行，可以使用流水线技术来重叠这些操作。具体地说，当第一个乘法操作开始执行时，下一个乘法操作可以进入下一个阶段，而不必等待第一个操作完成。这样，每个时钟周期都会有一个乘法操作完成，并达到每个周期一个操作的吞吐量。</p>
+<p>通过流水线技术，虽然单个乘法操作的延迟仍然是10个时钟周期，但整体的吞吐量得到了提高。这意味着在给定时间内可以完成更多的操作，从而提高了计算机系统的性能。</p>
+</li>
+<li>
+<p>教授介绍了单指令多数据（SIMD）的概念，并解释了如何在硬件和编译器中利用并行性来执行大型操作。SIMD是一种并行计算模型，它允许同时对多个数据元素执行相同的操作。教授提到了AVX-512单元，它支持将数据类型拆分成512位，并能够并行处理适应该大小的数据。</p>
+<p>教授提到了一些示例，如同时对多个双精度数进行加法运算，或同时对多个16位浮点数进行操作。这是通过硬件自动重新配置来实现的。为了能够让编译器利用并行性，需要将数据存储在连续的内存位置，并且通常应该对齐到缓存行的开始位置。</p>
+<p>然而，并行执行操作时存在一些问题，称为hazards或dependencies（依赖关系）。教授提到了三种类型的依赖关系：read after write（读后写）、write after read（写后读）和write after write（写后写）。这些依赖关系可能导致并行执行时获得错误的结果。编译器和硬件必须识别这些依赖关系，并避免对存在依赖关系的操作进行重新排序，以确保正确的结果。</p>
+<p>因此，理解SIMD的关键是利用硬件提供的并行性来同时处理多个数据元素，并确保正确处理数据之间的依赖关系，以避免错误的结果。编译器在生成代码时需要考虑这些因素，并采取适当的措施来最大程度地利用并行性，同时保持正确的语义和结果。</p>
+<p>由于存在数据依赖关系（hazards或dependencies），编译器可能会在做出决策时保守一些。也就是说，编译器可能会遵循较为保守的策略，以确保程序的正确性，而不去尝试过于激进的优化措施。</p>
+<p>编译器在进行代码优化时，需要考虑数据之间的依赖关系，以确保操作的顺序不会导致错误的结果。如果存在数据依赖关系，编译器可能会选择不进行某些优化或重排操作，以避免引入潜在的错误。</p>
+<p>因此，当编译器遇到复杂的依赖关系时，为了保证程序的正确性，它可能会选择较为保守的策略，并避免过于激进的优化。这可能导致编译后的代码性能略有降低，但可以确保程序的正确执行。</p>
+</li>
+<li>
+<p>教授提到了几个与编译器优化和硬件特性相关的问题</p>
+<ul>
+<li>
+<p>教授讲到了非连续内存访问可能会导致性能下降。如果对内存的访问不是按照连续的方式进行，例如在二维数组中按列访问而不是按行访问，或者使用间接寻址（通过指针或索引）进行访问，那么编译器很难判断两个内存位置是否会冲突，从而影响优化的进行。例如</p>
+<p>不按连续方式访问内存指的是在程序中访问内存时，数据的存储位置不是相邻的内存地址。例如，在一个数组中按照每隔几个元素的间隔进行访问，或者使用非线性的索引方式进行访问。</p>
+<p>编译器在进行代码优化时会尝试重排指令以最大程度地利用并行性和提高性能。然而，如果内存访问不是连续的，编译器很难判断两个内存位置是否会发生冲突。冲突可能指的是多个内存操作同时发生在同一内存位置，导致数据错误或意外的结果。</p>
+<p>下面是一个简单的例子，说明非连续内存访问可能引发的问题：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">c++Copy codeint array[<span class="number">8</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>&#125;;</span><br><span class="line"><span class="type">int</span> sum = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 非连续内存访问</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>; i += <span class="number">2</span>) &#123;</span><br><span class="line">  sum += array[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在上述代码中，我们对数组 <code>array</code> 进行了非连续内存访问，每次跳过一个元素进行累加操作。编译器难以确定这个访问模式是否会导致不同的迭代之间发生数据冲突，因为在不同的迭代中可能会访问到相同的内存位置。这种不确定性会限制编译器进行一些针对连续访问优化的操作，从而影响性能的提升。</p>
+<p>通过将内存访问调整为连续方式，编译器可以更好地理解代码的访存模式，并进行更有效的优化。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">c++Copy codeint array[<span class="number">8</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>&#125;;</span><br><span class="line"><span class="type">int</span> sum = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 连续内存访问</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>; i++) &#123;</span><br><span class="line">  sum += array[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在上述修正后的代码中，我们按照连续的方式访问数组 <code>array</code>，使得编译器可以更准确地进行优化，提高代码的性能。</p>
+</li>
+<li>
+<p>其次，教授提到了硬件中的特殊指令——融合乘加指令（fused multiply add）。这个指令可以同时执行乘法和加法操作，特别适用于内积（dot product）等计算密集型任务。使用融合乘加指令可以提高计算速度，并且在某些情况下还能提供更高的精度。融合乘加指令（fused multiply add）相比于分别执行乘法和加法操作可以降低舍入误差（rounding error）的累积。</p>
+<p>在计算机中，浮点数的表示是有限的，无法准确表示所有实数。因此，在进行浮点数运算时，会引入舍入误差。舍入误差是由于将无限精度的实数表示成有限位数的浮点数而产生的近似误差。</p>
+<p>在传统的乘法和加法操作中，分别执行乘法和加法会导致两次浮点数运算，每次运算都会引入一定的舍入误差。这两次舍入误差可能会相互影响，导致误差的累积。特别是在涉及多次乘法和加法的复杂计算中，舍入误差的累积可能会导致计算结果的精度损失。</p>
+<p>而融合乘加指令可以将乘法和加法操作合并为一次操作，从而减少了舍入误差的累积。通过在一次操作中执行乘法和加法，只进行一次舍入，避免了多次舍入误差的累积。因此，融合乘加指令可以提供更精确的计算结果。</p>
+</li>
+<li>
+<p>最后，教授指出编译器在进行优化时可能需要开发者的辅助。编译器并不总是能够完全理解开发者的意图和程序的细节，因此开发者可以采取一些措施来帮助编译器进行更好的优化。例如，通过优化标志（optimization flags）、代码重排、使用特定的指令（intrinsics）等方式来指示编译器进行特定的优化操作。</p>
+</li>
+<li>
+<p>“Vendor” 一词通常指的是供应商或厂商。在计算领域中，Vendor 指的是提供计算机硬件、软件或服务的公司或实体。这些公司通常生产、开发或销售与并行计算相关的产品，如处理器、服务器、超级计算机、并行编程工具、库等。Vendor 可能是大型计算机制造商、芯片厂商、软件开发商或云服务提供商等</p>
+</li>
+</ul>
 </li>
 </ul>
 
@@ -331,7 +463,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Content"><span class="nav-number">1.</span> <span class="nav-text">Content</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Remark"><span class="nav-number">2.</span> <span class="nav-text">Remark</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#content"><span class="nav-number">1.</span> <span class="nav-text"> Content</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#remark"><span class="nav-number">2.</span> <span class="nav-text"> Remark</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -436,6 +568,8 @@
 
 
 
+
+  
 
   
 

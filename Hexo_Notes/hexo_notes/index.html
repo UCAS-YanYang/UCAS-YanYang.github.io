@@ -211,104 +211,88 @@
 
       
         <p>本文主要记录一些在使用Hexo部署博客时遇到的坑。</p>
-<h3 id="Hexo项目简介">Hexo项目简介</h3>
+<h3 id="hexo项目简介"><a class="markdownIt-Anchor" href="#hexo项目简介"></a> Hexo项目简介</h3>
 <ol>
-<li class="lvl-3">
-<p><strong>安装 Hexo：</strong> Hexo 是一个基于 Node.js 的静态网站生成器，它可以将你编写的 Markdown 文件转换为静态网页。首先，你需要安装 Node.js，并使用 npm（Node.js 包管理器）来安装 Hexo。</p>
-</li>
-<li class="lvl-3">
-<p><strong>创建 Hexo 项目：</strong> 在命令行终端中，通过运行 <code>hexo init &lt;folder&gt;</code> 创建 Hexo 项目，其中 <code>&lt;folder&gt;</code> 是你要创建的项目文件夹的名称。Hexo 将为你创建一个基本的项目结构，包括配置文件、主题和内容文件夹。</p>
-</li>
-<li class="lvl-3">
-<p><strong>配置 Hexo：</strong> 进入 Hexo 项目文件夹，并编辑 <code>_config.yml</code> 文件来配置你的个人主页的设置，比如网站标题、描述、主题等。根据需要进行相应的定制化设置。</p>
-</li>
-<li class="lvl-3">
-<p><strong>编写内容：</strong> 在 Hexo 项目的 <code>source/_posts</code> 目录中，你可以创建 Markdown 文件来编写博客文章或页面内容。使用 Markdown 格式编写的文件可以包含文本、图片、链接等。每当你添加、修改或删除文章时，Hexo 将重新生成静态网页。</p>
-</li>
-<li class="lvl-3">
-<p><strong>生成静态网页：</strong> 在命令行终端中，运行 <code>hexo generate</code> 命令来生成静态网页。Hexo 将会解析你的 Markdown 文件，并根据配置生成相应的 HTML、CSS 和 JavaScript 文件，并将它们存储在 <code>public</code> 文件夹中。</p>
-</li>
-<li class="lvl-3">
-<p><strong>部署到 GitHub：</strong> 将生成的静态网页部署到 GitHub Pages 上，使你的个人主页可以在线访问。在 GitHub 上创建一个新的仓库，并将其命名为 <code>&lt;你的用户名&gt;.github.io</code>。然后，将 Hexo 生成的 <code>public</code> 文件夹中的内容复制到该仓库的主分支上。</p>
-</li>
-<li class="lvl-3">
-<p><strong>配置 GitHub Pages：</strong> 在 GitHub 仓库的设置中，找到 “GitHub Pages” 选项，并选择将 “Source” 设置为 “master branch”。保存设置后，GitHub Pages 将开始自动构建并托管你的个人主页。</p>
-</li>
-<li class="lvl-3">
-<p><strong>更新和发布：</strong> 当你编写新的博客文章或修改现有内容时，重复步骤 4 到步骤 7，即编写内容、生成静态网页并部署到 GitHub Pages。</p>
-</li>
+<li><strong>安装 Hexo：</strong> Hexo 是一个基于 Node.js 的静态网站生成器，它可以将你编写的 Markdown 文件转换为静态网页。首先，你需要安装 Node.js，并使用 npm（Node.js 包管理器）来安装 Hexo。</li>
+<li><strong>创建 Hexo 项目：</strong> 在命令行终端中，通过运行 <code>hexo init &lt;folder&gt;</code> 创建 Hexo 项目，其中 <code>&lt;folder&gt;</code> 是你要创建的项目文件夹的名称。Hexo 将为你创建一个基本的项目结构，包括配置文件、主题和内容文件夹。</li>
+<li><strong>配置 Hexo：</strong> 进入 Hexo 项目文件夹，并编辑 <code>_config.yml</code> 文件来配置你的个人主页的设置，比如网站标题、描述、主题等。根据需要进行相应的定制化设置。</li>
+<li><strong>编写内容：</strong> 在 Hexo 项目的 <code>source/_posts</code> 目录中，你可以创建 Markdown 文件来编写博客文章或页面内容。使用 Markdown 格式编写的文件可以包含文本、图片、链接等。每当你添加、修改或删除文章时，Hexo 将重新生成静态网页。</li>
+<li><strong>生成静态网页：</strong> 在命令行终端中，运行 <code>hexo generate</code> 命令来生成静态网页。Hexo 将会解析你的 Markdown 文件，并根据配置生成相应的 HTML、CSS 和 JavaScript 文件，并将它们存储在 <code>public</code> 文件夹中。</li>
+<li><strong>部署到 GitHub：</strong> 将生成的静态网页部署到 GitHub Pages 上，使你的个人主页可以在线访问。在 GitHub 上创建一个新的仓库，并将其命名为 <code>&lt;你的用户名&gt;.github.io</code>。然后，将 Hexo 生成的 <code>public</code> 文件夹中的内容复制到该仓库的主分支上。</li>
+<li><strong>配置 GitHub Pages：</strong> 在 GitHub 仓库的设置中，找到 “GitHub Pages” 选项，并选择将 “Source” 设置为 “master branch”。保存设置后，GitHub Pages 将开始自动构建并托管你的个人主页。</li>
+<li><strong>更新和发布：</strong> 当你编写新的博客文章或修改现有内容时，重复步骤 4 到步骤 7，即编写内容、生成静态网页并部署到 GitHub Pages。</li>
 </ol>
 <p>总结起来，Hexo 通过将 Markdown 文件转换为静态网页，以便在 GitHub 上托管和展示你的个人主页。你可以使用 Hexo 提供的命令进行生成和部署操作，而 GitHub Pages 则负责将生成的静态网页发布到互联网上，使其他人能够访问和浏览你的个人主页。</p>
-<h3 id="配置、使用说明（坑点）">配置、使用说明（坑点）</h3>
-<ul class="lvl-0">
-<li class="lvl-2">
+<h3 id="配置-使用说明坑点"><a class="markdownIt-Anchor" href="#配置-使用说明坑点"></a> 配置、使用说明（坑点）</h3>
+<ul>
+<li>
 <p>配置参考的是<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/102592286">从零开始搭建个人博客 - 知乎 (zhihu.com)</a>，但有一些小错误，配置过程中得到解决</p>
 </li>
-<li class="lvl-2">
+<li>
 <p>卸载npm装过的包时，需要use the syntax <code>npm uninstall package-name</code> in the <strong>directory where the package is located.</strong></p>
 </li>
 </ul>
-<h3 id="写作">写作</h3>
-<ul class="lvl-0">
-<li class="lvl-2">
+<h3 id="写作"><a class="markdownIt-Anchor" href="#写作"></a> 写作</h3>
+<ul>
+<li>
 <p>Hexo 配置文件（<code>_config.yml</code>）中的一些配置项：</p>
-<ul class="lvl-2">
-<li class="lvl-4">
+<ul>
+<li>
 <p><code>timezone: Asia/Shanghai</code>，没有Beijing这个选项，写Beijing在部署的时候会报错</p>
 </li>
-<li class="lvl-4">
+<li>
 <p><code>url: https://ucas-yanyang.github.io/</code>，这个链接到你的主页网址</p>
 </li>
-<li class="lvl-4">
+<li>
 <p><code>permalink: :title/</code>，这里的<code>:title</code>为<code>source/_post</code>下的相对路径，改配置选项与博文的url直接相关，每个md开头的yaml格式的配置中的<code>permalink</code>会覆盖全局<code>_config.yml</code>的</p>
 </li>
-<li class="lvl-4">
+<li>
 <p><code>post_asset_folder: true</code>，这个在后面插图片的时候有用</p>
 </li>
-<li class="lvl-4">
+<li>
 <p>（预留一行…）</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repository: git@github.com:UCAS-YanYang/UCAS-YanYang.github.io.git <span class="comment">#你的仓库地址</span></span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
 <p>repository要写成<code>git@</code>的仓库链接，用https的可能会因为vpn问题提交/部署不了，<code>branch</code>部分要注意仓库的默认分支是main还是master。</p>
 </li>
 </ul>
 </li>
-<li class="lvl-2">
+<li>
 <p>代码块问题：</p>
-<ul class="lvl-2">
-<li class="lvl-4">用typora写作时，快捷键代码块是看不到```部分的，如果不小心敲错```的个数会出现页面渲染错误（但在typora界面看不出来），部署后发现错误应该通过Vscode打开文件检查，hexo应该只能渲染三个反引号框住的代码块。</li>
-<li class="lvl-4">每个节点+（或*）之后如果要添加代码块，要预留一行（如上），不然hexo会渲染错误。</li>
+<ul>
+<li>用typora写作时，快捷键代码块是看不到```部分的，如果不小心敲错```的个数会出现页面渲染错误（但在typora界面看不出来），部署后发现错误应该通过Vscode打开文件检查，hexo应该只能渲染三个反引号框住的代码块。</li>
+<li>每个节点+（或*）之后如果要添加代码块，要预留一行（如上），不然hexo会渲染错误。</li>
 </ul>
 </li>
-<li class="lvl-2">
+<li>
 <p>通常情况下，Hexo 默认会将 <code>_posts</code> 目录下的所有 Markdown 文件视为博文，并根据文件的日期和文件名来生成博文的 URL。如果你在 <code>_posts</code> 目录下创建了文件夹，那么该文件夹下的 Markdown 文件也会被 Hexo 视为博文，并按照相应的规则进行处理。</p>
 <p>例如，假设你在 <code>_posts</code> 目录下创建了一个名为 <code>my-folder</code> 的文件夹，并在其中放置了一个名为 <code>my-article.md</code> 的 Markdown 文件。那么 Hexo 会将该 Markdown 文件视为一个博文，并将其 URL 生成规则应用于该文件。</p>
 </li>
-<li class="lvl-2">
+<li>
 <p>写作流程：</p>
 <ol>
-<li class="lvl-5">
+<li>
 <p><strong>创建新文章：</strong> 使用 Hexo 命令行工具创建新的 Markdown 文件，这将成为你的新文章的源文件。可以使用以下命令创建新文章：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo new [layout] <span class="string">&quot;文章标题&quot;</span></span><br><span class="line">或者</span><br><span class="line">hexo new [layout] --path Hexo_Notes/hexo_notes <span class="string">&quot;文章标题&quot;</span></span><br></pre></td></tr></table></figure>
 <p>其中 <code>[layout]</code> 是可选参数，用于指定文章的布局模板，默认为 <code>_config.yml</code> 文件中配置的 <code>default_layout</code> 值。第二行指令会在./source/_posts/Hexo_Notes路径下生成hexo_notes.md文件，指令中不存在的文件夹会自动创建。</p>
 <p>当然，也可以手动在./source/_posts/创建目录，创建md文件</p>
 </li>
-<li class="lvl-5">
+<li>
 <p><strong>编辑文章内容：</strong> 使用文本编辑器打开新创建的 Markdown 文件，并在其中编写文章内容。你可以使用 Markdown 语法来格式化和排版文本，同时添加必要的元数据，如标题、日期、标签、分类等。确保在文章的元数据和正文之间使用 <code>---</code> 分隔符。</p>
 </li>
-<li class="lvl-5">
+<li>
 <p><strong>保存文章：</strong> 在编辑完成后，保存 Markdown 文件。</p>
 </li>
-<li class="lvl-5">
+<li>
 <p><strong>生成静态页面：</strong> 运行 Hexo 命令来生成静态网页。使用以下命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
 <p>这将使用你写的文章和网站主题模板生成最终的静态网页。</p>
 </li>
-<li class="lvl-5">
+<li>
 <p><strong>本地预览：</strong> 运行 Hexo 命令来启动本地服务器，以便在浏览器中预览生成的网页。使用以下命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
 <p>打开浏览器，并访问预览链接（通常为 <code>http://localhost:4000</code>）来查看生成的网页。这样你可以确认文章的外观和格式是否符合预期。</p>
 </li>
-<li class="lvl-5">
+<li>
 <p><strong>发布文章：</strong> 最后，将生成的静态网页部署到你的网站服务器上，使其对公众可见。具体的发布方法取决于你的网站托管平台，一般情况下，你需要将生成的静态网页上传到相应的服务器或托管平台上，如 GitHub Pages、Netlify、Vercel 等。你可以使用 Hexo 提供的相应部署命令，或手动将生成的网页文件上传到服务器上。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
 <p>或者，你可以将生成的网页文件手动拷贝到服务器指定的目录。</p>
@@ -317,11 +301,11 @@
 <p>这些步骤可以让你在 Hexo 中完成文章的创建、编辑、生成和发布。请根据具体情况和你的网站配置进行相应的调整和操作。</p>
 </li>
 </ul>
-<ul class="lvl-0">
-<li class="lvl-2">
+<ul>
+<li>
 <p>插入图片，主要原理参考博客<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_43401436/article/details/107191688">hexo博客中插入图片失败——解决思路及个人最终解决办法_hexo博客插入</a>。以下附加几点说明：</p>
-<ul class="lvl-2">
-<li class="lvl-4">
+<ul>
+<li>
 <p>我采用的是npm package hexo-asset-image，其实起作用的主要是路径<code>.\node_modules\hexo-asset-image</code>下的json文件<code>index.js</code>，我们可以修改它。刚开始用这个包比较烦的地方可能是如上面博客链接中所说，在项目中生成的相对路径不大对，我们可以点进github仓库看由md转成html的源码，例如：</p>
 <p><img src="/Hexo_Notes/hexo_notes/image-20230620223136968.png" alt="image-20230620223136968"></p>
 <p>再对比一下png和html文件的相对位置关系：</p>
@@ -330,7 +314,7 @@
 <p><img src="/Hexo_Notes/hexo_notes/image-20230620223517875.png" alt="image-20230620223517875"></p>
 <p>然后再去试调几次<code>index.js</code>就可以试出来如何配置了。</p>
 </li>
-<li class="lvl-4">
+<li>
 <p>对于md博客的整理，当然可以用时间分文件夹，我为了方便管理，按自己在source/_posts/文件夹下自己创建的文件夹分类来管理，这就要求插入图片时不能用hexo自带的方法，得用包hexo-asset-image。</p>
 </li>
 </ul>
@@ -420,7 +404,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hexo%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">Hexo项目简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E3%80%81%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E%EF%BC%88%E5%9D%91%E7%82%B9%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">配置、使用说明（坑点）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%99%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">写作</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#hexo%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text"> Hexo项目简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E%E5%9D%91%E7%82%B9"><span class="nav-number">2.</span> <span class="nav-text"> 配置、使用说明（坑点）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%99%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text"> 写作</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -525,6 +509,8 @@
 
 
 
+
+  
 
   
 
