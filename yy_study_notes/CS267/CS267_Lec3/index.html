@@ -27,11 +27,21 @@
 <meta property="og:site_name" content="装作爱学习的YY的Blog">
 <meta property="og:description" content="This course is about Matrix Mulplication and the Roofline Model.">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://ucas-yanyang.github.io/yy_study_notes/CS267/CS267_Lec3/image-20230624214230109.png">
+<meta property="og:image" content="https://ucas-yanyang.github.io/yy_study_notes/CS267/CS267_Lec3/image-20230624214414854.png">
+<meta property="og:image" content="https://ucas-yanyang.github.io/yy_study_notes/CS267/CS267_Lec3/image-20230624214749799.png">
+<meta property="og:image" content="https://ucas-yanyang.github.io/yy_study_notes/CS267/CS267_Lec3/image-20230624215925577.png">
+<meta property="og:image" content="https://ucas-yanyang.github.io/yy_study_notes/CS267/CS267_Lec3/image-20230624220748292.png">
+<meta property="og:image" content="https://ucas-yanyang.github.io/yy_study_notes/CS267/CS267_Lec3/image-20230624221210200.png">
+<meta property="og:image" content="https://ucas-yanyang.github.io/yy_study_notes/CS267/CS267_Lec3/image-20230624224019754.png">
+<meta property="og:image" content="https://ucas-yanyang.github.io/yy_study_notes/CS267/CS267_Lec3/image-20230624223827453.png">
+<meta property="og:image" content="https://ucas-yanyang.github.io/yy_study_notes/CS267/CS267_Lec3/image-20230624223957802.png">
 <meta property="article:published_time" content="2023-06-23T11:52:20.000Z">
-<meta property="article:modified_time" content="2023-06-23T14:42:50.303Z">
+<meta property="article:modified_time" content="2023-06-24T14:55:59.767Z">
 <meta property="article:author" content="YY">
 <meta property="article:tag" content="Parallel Computing">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ucas-yanyang.github.io/yy_study_notes/CS267/CS267_Lec3/image-20230624214230109.png">
 
 <link rel="canonical" href="https://ucas-yanyang.github.io/yy_study_notes/CS267/CS267_Lec3/">
 
@@ -173,10 +183,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2023-06-23 19:52:20 / Modified: 22:42:50" itemprop="dateCreated datePublished" datetime="2023-06-23T19:52:20+08:00">2023-06-23</time>
+              <time title="Created: 2023-06-23 19:52:20" itemprop="dateCreated datePublished" datetime="2023-06-23T19:52:20+08:00">2023-06-23</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-06-24 22:55:59" itemprop="dateModified" datetime="2023-06-24T22:55:59+08:00">2023-06-24</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -200,13 +216,93 @@
 
       
         <h3 id="content"><a class="markdownIt-Anchor" href="#content"></a> Content</h3>
+<ul>
+<li>
+<p>Suppose the size of matrix is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>×</mo><mi>n</mi><mo separator="true">,</mo></mrow><annotation encoding="application/x-tex">n\times n,</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">n</span><span class="mpunct">,</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span> is the cache size. :</p>
+<ul>
+<li>
+<p>if the cache size is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>:</p>
+<img src="/yy_study_notes/CS267/CS267_Lec3/image-20230624214230109.png" alt="image-20230624214230109" style="zoom: 50%;">
+<p>then <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mi>I</mi><mo>≈</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">CI\approx 2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span></p>
+</li>
+<li>
+<p>if we use Blocked (Tiled) Matrix Multiply:</p>
+<img src="/yy_study_notes/CS267/CS267_Lec3/image-20230624214414854.png" alt="image-20230624214414854" style="zoom:50%;">
+<p>then <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mi>I</mi><mo>≈</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">CI\approx b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">b</span></span></span></span> if <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">n</span></span></span></span> is large, and we can set <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><msup><mi>b</mi><mn>2</mn></msup><mo>≈</mo><mi>M</mi></mrow><annotation encoding="application/x-tex">3b^2\approx M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span>.</p>
+</li>
+<li>
+<p>we can also consider the recursive matrix multiplication:</p>
+</li>
+<li>
+<img src="/yy_study_notes/CS267/CS267_Lec3/image-20230624214749799.png" alt="image-20230624214749799" style="zoom: 50%;">
+</li>
+<li>
+<p>Cache Oblivious (Call “micro-kernel” on small blocks, cutting off the recursion when the recursive problem size is small)</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Theory: Communication lower bound</p>
+<ul>
+<li>
+<p>Suppose the number of float computation is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>n</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">n^3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span> for matrix multiply, what we can optimize is the number of data movement and the moved words number has a lower bound:</p>
+<img src="/yy_study_notes/CS267/CS267_Lec3/image-20230624215925577.png" alt="image-20230624215925577" style="zoom:67%;">
+</li>
+<li>
+<p>Strassen’s Matrix Multiply</p>
+</li>
+<li>
+<p><img src="/yy_study_notes/CS267/CS267_Lec3/image-20230624220748292.png" alt="image-20230624220748292"></p>
+</li>
+<li>
+<p>Optimized libraries (BLAS) exist</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Roofline Model: A formula to estimate performance</p>
+<ul>
+<li>
+<p>Idea: applications are limited by either compute peak or memory bandwidth</p>
+</li>
+<li>
+<img src="/yy_study_notes/CS267/CS267_Lec3/image-20230624221210200.png" alt="image-20230624221210200" style="zoom: 50%;">
+</li>
+<li>
+<p>Firstly, estimate total time roughly:</p>
+<img src="/yy_study_notes/CS267/CS267_Lec3/image-20230624224019754.png" alt="image-20230624224019754" style="zoom:67%;">
+</li>
+<li>
+<p>Secondly, divide total float ops by the time estimated already:</p>
+<img src="/yy_study_notes/CS267/CS267_Lec3/image-20230624223827453.png" alt="image-20230624223827453" style="zoom: 67%;">
+</li>
+<li>
+<img src="/yy_study_notes/CS267/CS267_Lec3/image-20230624223957802.png" alt="image-20230624223957802" style="zoom:67%;">
+</li>
+</ul>
+</li>
+</ul>
 <h3 id="remark"><a class="markdownIt-Anchor" href="#remark"></a> Remark</h3>
 <ul>
 <li>
-<p>在这段讲述中，教授介绍了一种名为&quot;cache oblivious&quot;（缓存无感知）的算法，相对于&quot;cache aware&quot;（缓存感知）算法而言。这是一个在文献中经常出现的术语。</p>
+<p>在这段讲述中，教授介绍了一种名为**“cache oblivious”**（缓存无感知）的算法，相对于&quot;cache aware&quot;（缓存感知）算法而言。这是一个在文献中经常出现的术语。</p>
 <p>教授提到了对该算法进行优化的多种方式，并展示了过去人们在实践中如何进行优化的一些数据。首先，教授指出不应将递归运算一直进行到最小规模（比如 1×1 的矩阵乘法），因为递归调用的开销会超过执行 1×1 矩阵乘法本身的算术开销。</p>
 <p>实际上，人们通常会编写一个&quot;microkernel&quot;（微内核），也就是一段高度优化的代码，假设所有的数据都在缓存中，并且尽可能快地执行非常小规模的计算。当达到一定规模时，递归将中断，并调用该微内核。因此，这些算法在某种程度上是依赖于特定的计算机架构，因为微内核是以此方式设计的，它只关注缓存的各个层级。</p>
 <p>换言之，该算法的设计不依赖于具体的缓存大小或层级，而是通过自适应地利用缓存层级的特性来提高性能。这种缓存无感知的方法使得算法能够在不同的计算机系统和缓存配置下都能发挥良好的性能，而无需对特定的缓存参数进行手动调整。</p>
+</li>
+<li>
+<p>“leaving on the table” 是一个习语，意思是你没有充分利用或获取到某种机会、优势或资源。它常用来形容某人没有充分发挥潜力，或者没有获得可利用的好处或收益。</p>
+</li>
+<li>
+<p><strong>FLOP代表浮点运算（Floating Point Operation）</strong>。它是衡量计算机系统执行浮点数运算能力的单位。FLOP并不直接对应于存储空间（字节），而是表示计算机每秒钟能够执行的浮点数运算次数。</p>
+<p>**FLOP的计算通常是基于具体的浮点数操作。**例如，在许多系统中，乘法和加法操作被认为是一次FLOP。因此，当我们提到&quot;2 FLOPS&quot;时，意味着在一个时钟周期内，处理器可以执行两个浮点数操作，通常是乘法和加法的组合。</p>
+<p>请注意，FLOP是一个指标，用于衡量计算机系统的性能，而不是直接表示存储空间的大小。</p>
+<p>双精度浮点数（double precision float）使用更多的位数来表示小数部分，相比单精度浮点数（single precision float）具有更高的精度和范围，但同时也需要更多的计算资源来执行运算。因此，在计算FLOP时，双精度浮点数的运算被计为2个FLOP。</p>
+</li>
+<li>
+<p>在并行计算中，“cold start”（冷启动）是指在开始执行并行任务时，每个处理单元或线程需要从头开始执行，并且没有之前的计算状态或数据可用，<strong>也意味着data都在DRAM里</strong>，而cache里没有data，这种情况下，处理单元或线程可能需要进行一些初始化操作，加载数据并设置必要的变量，以便开始执行计算任务。</p>
+<p>冷启动可能导致一些额外的开销和延迟，因为处理单元或线程需要花费时间来准备和设置任务执行所需的环境。这对于需要频繁启动和停止并行任务的情况尤为显著，因为每次启动任务时都需要进行冷启动操作，这可能会影响整体的计算性能和效率。</p>
+<p>为了减少冷启动的影响，一些并行计算框架和优化技术会采取措施，如预热（warm-up）操作，将任务的执行延长一段时间，以使处理单元或线程能够在执行主要计算之前完成初始化和准备工作。这样可以减少冷启动的频率，提高并行计算的效率。</p>
 </li>
 </ul>
 
