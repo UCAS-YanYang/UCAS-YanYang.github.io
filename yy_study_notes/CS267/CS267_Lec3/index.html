@@ -20,17 +20,20 @@
     var CONFIG = {"hostname":"ucas-yanyang.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="学好最优化，走遍天下都不怕">
-<meta property="og:type" content="website">
-<meta property="og:title" content="装作爱学习的YY的Blog">
-<meta property="og:url" content="https://ucas-yanyang.github.io/categories/Parallel-Computing/index.html">
+  <meta name="description" content="This course is about Matrix Mulplication and the Roofline Model.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Matrix Mulplication and the Roofline Model">
+<meta property="og:url" content="https://ucas-yanyang.github.io/yy_study_notes/CS267/CS267_Lec3/index.html">
 <meta property="og:site_name" content="装作爱学习的YY的Blog">
-<meta property="og:description" content="学好最优化，走遍天下都不怕">
+<meta property="og:description" content="This course is about Matrix Mulplication and the Roofline Model.">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-06-23T11:52:20.000Z">
+<meta property="article:modified_time" content="2023-06-23T14:42:50.303Z">
 <meta property="article:author" content="YY">
+<meta property="article:tag" content="Parallel Computing">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://ucas-yanyang.github.io/categories/Parallel-Computing/">
+<link rel="canonical" href="https://ucas-yanyang.github.io/yy_study_notes/CS267/CS267_Lec3/">
 
 
 <script id="page-configurations">
@@ -38,12 +41,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
 
-  <title>Category: Parallel Computing | 装作爱学习的YY的Blog</title>
+  <title>Matrix Mulplication and the Roofline Model | 装作爱学习的YY的Blog</title>
   
 
 
@@ -141,91 +144,99 @@
         <div class="content-wrap">
           
 
-          <div class="content category">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">Parallel Computing
-          <small>Category</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://ucas-yanyang.github.io/yy_study_notes/CS267/CS267_Lec3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YY">
+      <meta itemprop="description" content="学好最优化，走遍天下都不怕">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="装作爱学习的YY的Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Matrix Mulplication and the Roofline Model
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2023-06-23 19:52:20 / Modified: 22:42:50" itemprop="dateCreated datePublished" datetime="2023-06-23T19:52:20+08:00">2023-06-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Parallel-Computing/" itemprop="url" rel="index"><span itemprop="name">Parallel Computing</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">This course is about Matrix Mulplication and the Roofline Model.</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2023</span>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2023-06-23T19:52:20+08:00"
-              content="2023-06-23">
-          06-23
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/yy_study_notes/CS267/CS267_Lec3/" itemprop="url">
-            <span itemprop="name">Matrix Mulplication and the Roofline Model</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2023-06-22T15:34:19+08:00"
-              content="2023-06-22">
-          06-22
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/yy_study_notes/CS267/CS267_Lec2/" itemprop="url">
-            <span itemprop="name">Memory Hierarchies and Matrix Multiplication</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2023-06-20T16:18:00+08:00"
-              content="2023-06-20">
-          06-20
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/yy_study_notes/CS267/CS267_Lec1/" itemprop="url">
-            <span itemprop="name">Introduction and Overview</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
+        <h3 id="content"><a class="markdownIt-Anchor" href="#content"></a> Content</h3>
+<h3 id="remark"><a class="markdownIt-Anchor" href="#remark"></a> Remark</h3>
+<ul>
+<li>
+<p>在这段讲述中，教授介绍了一种名为&quot;cache oblivious&quot;（缓存无感知）的算法，相对于&quot;cache aware&quot;（缓存感知）算法而言。这是一个在文献中经常出现的术语。</p>
+<p>教授提到了对该算法进行优化的多种方式，并展示了过去人们在实践中如何进行优化的一些数据。首先，教授指出不应将递归运算一直进行到最小规模（比如 1×1 的矩阵乘法），因为递归调用的开销会超过执行 1×1 矩阵乘法本身的算术开销。</p>
+<p>实际上，人们通常会编写一个&quot;microkernel&quot;（微内核），也就是一段高度优化的代码，假设所有的数据都在缓存中，并且尽可能快地执行非常小规模的计算。当达到一定规模时，递归将中断，并调用该微内核。因此，这些算法在某种程度上是依赖于特定的计算机架构，因为微内核是以此方式设计的，它只关注缓存的各个层级。</p>
+<p>换言之，该算法的设计不依赖于具体的缓存大小或层级，而是通过自适应地利用缓存层级的特性来提高性能。这种缓存无感知的方法使得算法能够在不同的计算机系统和缓存配置下都能发挥良好的性能，而无需对特定的缓存参数进行手动调整。</p>
+</li>
+</ul>
 
     </div>
-  </div>
-  
-  
-  
 
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Parallel-Computing/" rel="tag"># Parallel Computing</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/yy_study_notes/CS267/CS267_Lec2/" rel="prev" title="Memory Hierarchies and Matrix Multiplication">
+      <i class="fa fa-chevron-left"></i> Memory Hierarchies and Matrix Multiplication
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
 
@@ -278,6 +289,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#content"><span class="nav-number">1.</span> <span class="nav-text"> Content</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#remark"><span class="nav-number">2.</span> <span class="nav-text"> Remark</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
