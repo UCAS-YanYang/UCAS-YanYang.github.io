@@ -23,27 +23,27 @@
   <meta name="description" content="This course is about Matrix Mulplication and the Roofline Model.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Matrix Mulplication and the Roofline Model">
-<meta property="og:url" content="https://ucas-yanyang.github.io/yy_study_notes/CS267/CS267_Lec3/index.html">
+<meta property="og:url" content="https://ucas-yanyang.github.io/Study_Notes/CS267/CS267_Lec3/index.html">
 <meta property="og:site_name" content="装作爱学习的YY的Blog">
 <meta property="og:description" content="This course is about Matrix Mulplication and the Roofline Model.">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://ucas-yanyang.github.io/yy_study_notes/CS267/CS267_Lec3/image-20230624214230109.png">
-<meta property="og:image" content="https://ucas-yanyang.github.io/yy_study_notes/CS267/CS267_Lec3/image-20230624214414854.png">
-<meta property="og:image" content="https://ucas-yanyang.github.io/yy_study_notes/CS267/CS267_Lec3/image-20230624214749799.png">
-<meta property="og:image" content="https://ucas-yanyang.github.io/yy_study_notes/CS267/CS267_Lec3/image-20230624215925577.png">
-<meta property="og:image" content="https://ucas-yanyang.github.io/yy_study_notes/CS267/CS267_Lec3/image-20230624220748292.png">
-<meta property="og:image" content="https://ucas-yanyang.github.io/yy_study_notes/CS267/CS267_Lec3/image-20230624221210200.png">
-<meta property="og:image" content="https://ucas-yanyang.github.io/yy_study_notes/CS267/CS267_Lec3/image-20230624224019754.png">
-<meta property="og:image" content="https://ucas-yanyang.github.io/yy_study_notes/CS267/CS267_Lec3/image-20230624223827453.png">
-<meta property="og:image" content="https://ucas-yanyang.github.io/yy_study_notes/CS267/CS267_Lec3/image-20230624223957802.png">
+<meta property="og:image" content="https://ucas-yanyang.github.io/Study_Notes/CS267/CS267_Lec3/image-20230624214230109.png">
+<meta property="og:image" content="https://ucas-yanyang.github.io/Study_Notes/CS267/CS267_Lec3/image-20230624214414854.png">
+<meta property="og:image" content="https://ucas-yanyang.github.io/Study_Notes/CS267/CS267_Lec3/image-20230624214749799.png">
+<meta property="og:image" content="https://ucas-yanyang.github.io/Study_Notes/CS267/CS267_Lec3/image-20230624215925577.png">
+<meta property="og:image" content="https://ucas-yanyang.github.io/Study_Notes/CS267/CS267_Lec3/image-20230624220748292.png">
+<meta property="og:image" content="https://ucas-yanyang.github.io/Study_Notes/CS267/CS267_Lec3/image-20230624221210200.png">
+<meta property="og:image" content="https://ucas-yanyang.github.io/Study_Notes/CS267/CS267_Lec3/image-20230624224019754.png">
+<meta property="og:image" content="https://ucas-yanyang.github.io/Study_Notes/CS267/CS267_Lec3/image-20230624223827453.png">
+<meta property="og:image" content="https://ucas-yanyang.github.io/Study_Notes/CS267/CS267_Lec3/image-20230624223957802.png">
 <meta property="article:published_time" content="2023-06-23T11:52:20.000Z">
-<meta property="article:modified_time" content="2023-06-24T14:55:59.767Z">
+<meta property="article:modified_time" content="2023-06-25T04:03:42.825Z">
 <meta property="article:author" content="YY">
 <meta property="article:tag" content="Parallel Computing">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://ucas-yanyang.github.io/yy_study_notes/CS267/CS267_Lec3/image-20230624214230109.png">
+<meta name="twitter:image" content="https://ucas-yanyang.github.io/Study_Notes/CS267/CS267_Lec3/image-20230624214230109.png">
 
-<link rel="canonical" href="https://ucas-yanyang.github.io/yy_study_notes/CS267/CS267_Lec3/">
+<link rel="canonical" href="https://ucas-yanyang.github.io/Study_Notes/CS267/CS267_Lec3/">
 
 
 <script id="page-configurations">
@@ -161,7 +161,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://ucas-yanyang.github.io/yy_study_notes/CS267/CS267_Lec3/">
+    <link itemprop="mainEntityOfPage" href="https://ucas-yanyang.github.io/Study_Notes/CS267/CS267_Lec3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -191,7 +191,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-06-24 22:55:59" itemprop="dateModified" datetime="2023-06-24T22:55:59+08:00">2023-06-24</time>
+                <time title="Modified: 2023-06-25 12:03:42" itemprop="dateModified" datetime="2023-06-25T12:03:42+08:00">2023-06-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -222,19 +222,19 @@
 <ul>
 <li>
 <p>if the cache size is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>:</p>
-<img src="/yy_study_notes/CS267/CS267_Lec3/image-20230624214230109.png" alt="image-20230624214230109" style="zoom: 50%;">
+<img src="/Study_Notes/CS267/CS267_Lec3/image-20230624214230109.png" alt="image-20230624214230109" style="zoom: 50%;">
 <p>then <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mi>I</mi><mo>≈</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">CI\approx 2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span></p>
 </li>
 <li>
 <p>if we use Blocked (Tiled) Matrix Multiply:</p>
-<img src="/yy_study_notes/CS267/CS267_Lec3/image-20230624214414854.png" alt="image-20230624214414854" style="zoom:50%;">
+<img src="/Study_Notes/CS267/CS267_Lec3/image-20230624214414854.png" alt="image-20230624214414854" style="zoom:50%;">
 <p>then <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mi>I</mi><mo>≈</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">CI\approx b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">b</span></span></span></span> if <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">n</span></span></span></span> is large, and we can set <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><msup><mi>b</mi><mn>2</mn></msup><mo>≈</mo><mi>M</mi></mrow><annotation encoding="application/x-tex">3b^2\approx M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span>.</p>
 </li>
 <li>
 <p>we can also consider the recursive matrix multiplication:</p>
 </li>
 <li>
-<img src="/yy_study_notes/CS267/CS267_Lec3/image-20230624214749799.png" alt="image-20230624214749799" style="zoom: 50%;">
+<img src="/Study_Notes/CS267/CS267_Lec3/image-20230624214749799.png" alt="image-20230624214749799" style="zoom: 50%;">
 </li>
 <li>
 <p>Cache Oblivious (Call “micro-kernel” on small blocks, cutting off the recursion when the recursive problem size is small)</p>
@@ -246,13 +246,13 @@
 <ul>
 <li>
 <p>Suppose the number of float computation is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>n</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">n^3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span> for matrix multiply, what we can optimize is the number of data movement and the moved words number has a lower bound:</p>
-<img src="/yy_study_notes/CS267/CS267_Lec3/image-20230624215925577.png" alt="image-20230624215925577" style="zoom:67%;">
+<img src="/Study_Notes/CS267/CS267_Lec3/image-20230624215925577.png" alt="image-20230624215925577" style="zoom:67%;">
 </li>
 <li>
 <p>Strassen’s Matrix Multiply</p>
 </li>
 <li>
-<p><img src="/yy_study_notes/CS267/CS267_Lec3/image-20230624220748292.png" alt="image-20230624220748292"></p>
+<p><img src="/Study_Notes/CS267/CS267_Lec3/image-20230624220748292.png" alt="image-20230624220748292"></p>
 </li>
 <li>
 <p>Optimized libraries (BLAS) exist</p>
@@ -266,18 +266,18 @@
 <p>Idea: applications are limited by either compute peak or memory bandwidth</p>
 </li>
 <li>
-<img src="/yy_study_notes/CS267/CS267_Lec3/image-20230624221210200.png" alt="image-20230624221210200" style="zoom: 50%;">
+<img src="/Study_Notes/CS267/CS267_Lec3/image-20230624221210200.png" alt="image-20230624221210200" style="zoom: 50%;">
 </li>
 <li>
 <p>Firstly, estimate total time roughly:</p>
-<img src="/yy_study_notes/CS267/CS267_Lec3/image-20230624224019754.png" alt="image-20230624224019754" style="zoom:67%;">
+<img src="/Study_Notes/CS267/CS267_Lec3/image-20230624224019754.png" alt="image-20230624224019754" style="zoom:67%;">
 </li>
 <li>
 <p>Secondly, divide total float ops by the time estimated already:</p>
-<img src="/yy_study_notes/CS267/CS267_Lec3/image-20230624223827453.png" alt="image-20230624223827453" style="zoom: 67%;">
+<img src="/Study_Notes/CS267/CS267_Lec3/image-20230624223827453.png" alt="image-20230624223827453" style="zoom: 67%;">
 </li>
 <li>
-<img src="/yy_study_notes/CS267/CS267_Lec3/image-20230624223957802.png" alt="image-20230624223957802" style="zoom:67%;">
+<img src="/Study_Notes/CS267/CS267_Lec3/image-20230624223957802.png" alt="image-20230624223957802" style="zoom:67%;">
 </li>
 </ul>
 </li>
@@ -285,7 +285,7 @@
 <h3 id="remark"><a class="markdownIt-Anchor" href="#remark"></a> Remark</h3>
 <ul>
 <li>
-<p>在这段讲述中，教授介绍了一种名为**“cache oblivious”**（缓存无感知）的算法，相对于&quot;cache aware&quot;（缓存感知）算法而言。这是一个在文献中经常出现的术语。</p>
+<p>在这段讲述中，教授介绍了一种名为&quot;<strong>cache oblivious</strong>&quot;（缓存无感知）的算法，相对于&quot;cache aware&quot;（缓存感知）算法而言。这是一个在文献中经常出现的术语。</p>
 <p>教授提到了对该算法进行优化的多种方式，并展示了过去人们在实践中如何进行优化的一些数据。首先，教授指出不应将递归运算一直进行到最小规模（比如 1×1 的矩阵乘法），因为递归调用的开销会超过执行 1×1 矩阵乘法本身的算术开销。</p>
 <p>实际上，人们通常会编写一个&quot;microkernel&quot;（微内核），也就是一段高度优化的代码，假设所有的数据都在缓存中，并且尽可能快地执行非常小规模的计算。当达到一定规模时，递归将中断，并调用该微内核。因此，这些算法在某种程度上是依赖于特定的计算机架构，因为微内核是以此方式设计的，它只关注缓存的各个层级。</p>
 <p>换言之，该算法的设计不依赖于具体的缓存大小或层级，而是通过自适应地利用缓存层级的特性来提高性能。这种缓存无感知的方法使得算法能够在不同的计算机系统和缓存配置下都能发挥良好的性能，而无需对特定的缓存参数进行手动调整。</p>
@@ -323,11 +323,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/yy_study_notes/CS267/CS267_Lec2/" rel="prev" title="Memory Hierarchies and Matrix Multiplication">
+    <a href="/Study_Notes/CS267/CS267_Lec2/" rel="prev" title="Memory Hierarchies and Matrix Multiplication">
       <i class="fa fa-chevron-left"></i> Memory Hierarchies and Matrix Multiplication
     </a></div>
       <div class="post-nav-item">
-    <a href="/yy_study_notes/CS267/CS267_Recitation_1/" rel="next" title="Recitation for HW1">
+    <a href="/Study_Notes/CS267/CS267_Recitation_1/" rel="next" title="Recitation for HW1">
       Recitation for HW1 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -402,7 +402,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
